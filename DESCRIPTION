@@ -8,7 +8,7 @@ Authors@R: c(
     )
 Description: 
     In particular, dplyr functions like select, filter etc. are provided
-License: GPL (>= 3)
+License: MIT
 Encoding: UTF-8
 LazyLoad: yes
 LazyData: yes
@@ -17,3 +17,5 @@ Depends:
     dplyr
 Suggests: 
     testthat
+RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)
