@@ -15,3 +15,5 @@ LazyData: yes
 Depends:
     hyperSpec,
     dplyr
+Suggests: 
+    testthat

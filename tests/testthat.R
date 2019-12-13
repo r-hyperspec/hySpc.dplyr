@@ -1,4 +1,4 @@
 library(testthat)
-library(hyperSpec.dplyr)
+library(hyperSpec.tidyverse)
 
-test_check("hyperSpec.dplyr")
+test_check("hyperSpec.tidyverse")
