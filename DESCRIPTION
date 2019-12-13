@@ -13,9 +13,13 @@ Encoding: UTF-8
 LazyLoad: yes
 LazyData: yes
 Depends:
-    hyperSpec,
-    dplyr
+    hyperSpec (>= 0.99-20191213),
+    dplyr,
+    magrittr
 Suggests: 
     testthat
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
+Collate: 
+    'unittest.R'
+    'filter.R'
