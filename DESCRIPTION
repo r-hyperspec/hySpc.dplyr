@@ -7,7 +7,8 @@ Authors@R: c(
     person("Claudia",   "Beleites",  role = c("aut","cre"), email = "Claudia.Beleites@chemometrix.gmbh")
     )
 Description: 
-    In particular, dplyr functions like select, filter etc. are provided
+    dplyr functions like select, filter etc. are provided for hyperSpec objects. 
+    This allows smoother integration of hyperSpec into the tidyverse and also smoother working with pipes (magrittr).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyLoad: yes
@@ -18,6 +19,9 @@ Depends:
     magrittr
 Imports: 
     testthat
+Suggests:
+    knitr
+VignetteBuilder: knitr
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Collate: 

@@ -1,0 +1,69 @@
+---
+title: "hyperSpec.tidyverse"
+author: "Claudia Beleites"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    fig_caption: yes
+vignette: >
+  %\VignetteIndexEntry{hyperSpec.tidyverse}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+library (hyperSpec.tidyverse)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  results = "hide"
+)
+```
+
+This vignette gives a short introduction into package `hyperSpec.tidyverse` which "fortifies" `hyperSpec` objects for the use with `tidyverse` functions, i.e. it provides functions such as `filter`, `select`, and so on for `hyperSpec` objects.
+
+This includes working with pipes (see [magrittr::magrittr]).
+
+## The Spectra Matrix
+
+The spectra matrix in `$spc` behaves a bit different from the extra-data columns, because it contains a whole matrix inside one column.
+
+## Selecting a subset of spectra with `filter()`
+
+[dplyr::filter()](https://dplyr.tidyverse.org/reference/filter.html) selects rows, and `filter`ing by extra data columns works as with any `data.frame`:
+
+```{r filter-extra-data}
+flu %>% 
+  filter (c > 0.2)
+
+flu %>% 
+  filter (c %>% between (0.15, 0.25))
+```
+
+The filter conditions (logical predicates) need to evaluate to one logical value per row of the object that is `filter`ed. 
+Logical expressions on the spectra matrix such as `spc > 100` produce a logical *matrix*, though, that indicates which *elements* of the spectra matrix match the condition. 
+To obtain the logical *vector* that indicates which spectra (rows) should be kept, such a logical matrix can be converted into the needed vector by `hyperSpec::any_wl()` or `hyperSpec::all_wl()` which are `TRUE` for the spectra that fulfill the condition at any or all wavelengths, respectively.
+
+Typical filtering tasks based on the spectra matrix are:
+
+- remove "empty" spectra which have `NA`s at all wavelengths (which may be produced by certain import functions):
+  ```{r filter spc empty spectra}
+  flu %>%
+    filter (!all_wl (is.na (spc)))
+  ```
+- remove spectra which have `NA`s at any wavelength (for example after spikes or other artifacts have been marked by `NA`s):
+  ```{r filter spc NAs}
+  flu %>%
+    filter (!any_wl (is.na (spc)))
+  ```
+- keep only spectra with all intensities inside a specified range (e.g. non-negative and below a saturation threshold):
+  ```{r filter spc between, eval = FALSE}
+  flu %>%
+    filter (all_wl (between (spc, 0, 500)))
+  ```
+- keep only spectra with average intensity inside a specified range (e.g. non-negative and below a saturation threshold):
+  ```{r filter spc avg intensity between}
+  flu %>% 
+    filter (rowMeans (spc) %>% between (0, 500))
+  ```
+
