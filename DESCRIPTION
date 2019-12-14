@@ -26,4 +26,5 @@ RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Collate: 
     'unittest.R'
+    'between.R'
     'filter.R'

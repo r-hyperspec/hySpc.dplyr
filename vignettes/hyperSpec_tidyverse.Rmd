@@ -57,7 +57,7 @@ Typical filtering tasks based on the spectra matrix are:
     filter (!any_wl (is.na (spc)))
   ```
 - keep only spectra with all intensities inside a specified range (e.g. non-negative and below a saturation threshold):
-  ```{r filter spc between, eval = FALSE}
+  ```{r filter spc between}
   flu %>%
     filter (all_wl (between (spc, 0, 500)))
   ```
