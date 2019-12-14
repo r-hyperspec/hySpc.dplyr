@@ -25,6 +25,7 @@ setGeneric ("between", useAsDefault = dplyr::between)
 #'
 #' @examples
 #' between (flu [[]], 100, 400)
+#' @importFrom methods setMethod
 setMethod("between", signature = "matrix", .between.matrix)
 
 .test (.between.matrix) <- function (){

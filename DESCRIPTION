@@ -18,7 +18,8 @@ Depends:
     dplyr,
     magrittr
 Imports: 
-    testthat
+    testthat,
+    methods
 Suggests:
     knitr
 VignetteBuilder: knitr
@@ -28,3 +29,4 @@ Collate:
     'unittest.R'
     'between.R'
     'filter.R'
+    'select.R'
