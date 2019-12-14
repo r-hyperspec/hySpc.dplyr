@@ -5,12 +5,14 @@
 #' the filtering expression must return a logical vector with one value per spectrum,
 #' see examples.
 #'
-#' @param .data the hyperSpec object
-#' @param ... conditions, see [dplyr::filter ()]
-#' @param .preserve recalculate grouping structure, see [dplyr::filter ()]
+#' @inheritParams dplyr::filter
 #'
 #' @return hyperSpec object with rows (spectra) matching the conditions (logical predicates) in `...`
 #' @include unittest.R
+#' @seealso [dplyr::filter()]
+#' @importFrom dplyr filter
+#' @importFrom hyperSpec chk.hy
+#' @import magrittr
 #' @export
 #'
 #' @examples
@@ -26,7 +28,7 @@
 #' tmp %>% filter (!any_wl (is.na (spc)))
 #' tmp %>% filter (all_wl (!is.na (spc))) # the same
 #'
-#' remove spectra that contain only NAs:
+#' # remove spectra that contain only NAs:
 #' tmp %>% filter (!all_wl (is.na (spc)))
 #' tmp %>% filter (any_wl (!is.na (spc))) # the same
 #'
@@ -36,7 +38,7 @@
 #'    plotmap
 filter.hyperSpec <- function(.data, ..., .preserve = FALSE) {
 
-  .data@data <- dplyr::filter (.data@data, ..., .preserve = FALSE)
+  .data@data <- filter (.data@data, ..., .preserve = FALSE)
   chk.hy(.data)
 
   .data
