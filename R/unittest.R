@@ -9,7 +9,11 @@
 ##' @author Claudia Beleites
 ##'
 ##' @keywords programming utilities
-##' @import testthat
+##' @importFrom  testthat SummaryReporter
+##' @importFrom  testthat ListReporter
+##' @importFrom  testthat MultiReporter
+##' @importFrom  testthat with_reporter
+##' @importFrom  testthat get_reporter
 ##' @export
 ##' @examples
 ##'
@@ -17,7 +21,7 @@
 ##'
 hyperSpec.dplyr.unittest <- function (){
   if (!requireNamespace("testthat", quietly=TRUE)) {
-    warning("testthat required to run the unit tests.")
+    warning("Package testthat required to run the unit tests.")
     return(NA)
   }
   if (! "package:testthat" %in% search ())

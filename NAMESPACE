@@ -2,4 +2,11 @@
 
 S3method(filter,hyperSpec)
 export(hyperSpec.dplyr.unittest)
-import(testthat)
+import(magrittr)
+importFrom(dplyr,filter)
+importFrom(hyperSpec,chk.hy)
+importFrom(testthat,ListReporter)
+importFrom(testthat,MultiReporter)
+importFrom(testthat,SummaryReporter)
+importFrom(testthat,get_reporter)
+importFrom(testthat,with_reporter)
