@@ -8,7 +8,7 @@ Authors@R: c(
     )
 Description: 
     In particular, dplyr functions like select, filter etc. are provided
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyLoad: yes
 LazyData: yes
@@ -16,7 +16,7 @@ Depends:
     hyperSpec (>= 0.99-20191213),
     dplyr,
     magrittr
-Suggests: 
+Imports: 
     testthat
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
