@@ -67,3 +67,17 @@ Typical filtering tasks based on the spectra matrix are:
     filter (rowMeans (spc) %>% between (0, 500))
   ```
 
+If the rows should be selected by indices rather than a condition, use [slice()](https://dplyr.tidyverse.org/reference/slice.html):
+
+```{r slice}
+  chondro %>% slice (1:3)
+  chondro %>% slice (800 : n())
+  chondro %>% slice (-10 : -n())
+  flu %>% slice (1, 3, 5)
+```
+
+Also, `head` and `tail` work as usual.
+
+## Select particular columns
+
+[dplyr::select()](https://dplyr.tidyverse.org/reference/select.html)
