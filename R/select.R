@@ -10,13 +10,11 @@
 #'
 #'
 #' @inheritParams dplyr::select
-#' @seealso [dplyr::select()], [keep.hy()]
-#' @param keep.hyperSpec should the result always be a hyperSpec object (`keep.hyperSpec = TRUE`),
-#' or  be converted into a data.frame if the spectra matrix is not included in the selection
-#' (`keep.hyperSpec = FALSE`)?
-#'
+#' @seealso [dplyr::select()]
 #' @return hyperSpec object or data.frame with the selected columns. If the `$spc` is not included in the selection, the result will be a data.frame.
 #' @include unittest.R
+#' @importFrom dplyr select
+#' @importFrom hyperSpec labels<-
 #' @export
 #'
 #' @examples
@@ -40,34 +38,4 @@ select.hyperSpec <- function(.data, ...) {
     labels (.data) <- labels (.data) [c ( ".wavelength", colnames (.data))]
     .data
   }
-}
-
-# @rdname select
-select_.hyperSpec <- select.hyperSpec
-
-.test (select.hyperSpec) <- function() {
-  context ("select")
-
-  test_that ("unselecting $spc produces data.frame", {
-    expect_s3_class(select (flu, -spc), "data.frame")
-
-    tmp <- chondro %>%
-      select (-spc) %>%
-      as.hyperSpec
-
-    expect_s4_class (tmp, "hyperSpec")
-    expect_equivalent(dim (tmp), c (nrow (chondro), ncol (chondro), 0L))
-    expect_equal (tmp$.., chondro$..)
-    expect_equal (labels (tmp), labels (chondro [,,FALSE]))
-  })
-
-  test_that("selecting with $spc => hyperSpec object", {
-
-    tmp <- select (chondro, x, spc)
-    expect_equal(tmp$.., chondro [,c ("x", "spc")]$..)
-
-
-    tmp <- select (chondro, spc, x)
-    expect_equal(tmp$.., chondro [,c ("spc", "x")]$..)
-  })
 }
