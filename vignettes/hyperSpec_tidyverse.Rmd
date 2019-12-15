@@ -108,7 +108,7 @@ chondro %>%
   select (clusters, spc)
 ```
 
-If the spectra matrix is excluded, the result is a `data.frame`:
+If the result does not have the spectra matrix *in `$spc`*, it will be returned as `data.frame`:
 
 ```{r, results='show'}
 flu %>% 
