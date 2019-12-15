@@ -9,10 +9,12 @@ vignette: >
   %\VignetteIndexEntry{hyperSpec.tidyverse}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{hyperSpec,tidyverse,magrittr}
 ---
 
 ```{r setup, include = FALSE}
-library (hyperSpec.tidyverse)
+library(hyperSpec.tidyverse)
+library(hyperSpec)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
