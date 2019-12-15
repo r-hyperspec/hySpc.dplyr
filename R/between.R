@@ -18,8 +18,8 @@ setGeneric ("between", useAsDefault = dplyr::between)
   res
 }
 #' @rdname between
-#' @param x matrix
-#' @return logical *matrix* indicating which elements of the matrix are between `left` and `right`.
+#' @param x matrix or hyperSpec object
+#' @return logical *matrix* indicating which elements of `x` are between `left` and `right`.
 #' @family between
 #' @export
 #'
@@ -43,8 +43,6 @@ setMethod("between", signature = "matrix", .between.matrix)
   between (x$spc, left, right)
 }
 
-#' @param x hyperSpec object
-#' @return logical *matrix* indicating which elements of the hyperSpec object's spectra matrix are between `left` and `right`.
 #' @family between
 #' @rdname between
 #' @export
