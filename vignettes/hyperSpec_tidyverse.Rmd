@@ -20,15 +20,19 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette gives a short introduction into package `hyperSpec.tidyverse` which "fortifies" `hyperSpec` objects for the use with `tidyverse` functions, i.e. it provides functions such as `filter`, `select`, and so on for `hyperSpec` objects.
-
-This includes working with pipes (see [magrittr::magrittr]).
+This vignette introduces package `hyperSpec.tidytverse`.  
+`hyperSpec.tidyverse` "fortifies" `hyperSpec` objects so that they can be used in `tidyverse` style.
+In particular, this [piping](https://magrittr.tidyverse.org/) becomes convenient. 
+On a more technical level, `hyperSpec.tidytverse` provides functions such as `filter`, `select`, and so on for `hyperSpec` objects.
 
 ## The Spectra Matrix
 
 The spectra matrix in `$spc` behaves a bit different from the extra-data columns, because it contains a whole matrix inside one column.
+Many `tidyverse` functions can directly deal with this.
+In other cases, special attention is needed - 
+this is explained in this vignette. 
 
-## Selecting a subset of spectra with `filter()`
+## Selecting a subset of spectra with `filter()` or `slice()`
 
 [dplyr::filter()](https://dplyr.tidyverse.org/reference/filter.html) selects rows, and `filter`ing by extra data columns works as with any `data.frame`:
 
@@ -40,9 +44,14 @@ flu %>%
   filter (c %>% between (0.15, 0.25))
 ```
 
-The filter conditions (logical predicates) need to evaluate to one logical value per row of the object that is `filter`ed. 
-Logical expressions on the spectra matrix such as `spc > 100` produce a logical *matrix*, though, that indicates which *elements* of the spectra matrix match the condition. 
-To obtain the logical *vector* that indicates which spectra (rows) should be kept, such a logical matrix can be converted into the needed vector by `hyperSpec::any_wl()` or `hyperSpec::all_wl()` which are `TRUE` for the spectra that fulfill the condition at any or all wavelengths, respectively.
+The filter conditions (logical predicates) must yield one logical value per row. 
+Logical expressions on the spectra matrix such as `spc > 100` yield a logical *matrix*.
+This matrix indicates which *elements* of the spectra matrix match the condition.
+
+To obtain the logical vector that indicates which *spectra* (rows) should be kept, further information is needed:
+should a spectrum be kept if *any* of its intensity values (spectra matrix elements) fulfills the condition, 
+or only if *all* of them do?
+`hyperSpec` functions `any_wl()` and `all_wl()` summarize the logical matrix in this way.
 
 Typical filtering tasks based on the spectra matrix are:
 
@@ -61,23 +70,69 @@ Typical filtering tasks based on the spectra matrix are:
   flu %>%
     filter (all_wl (between (spc, 0, 500)))
   ```
-- keep only spectra with average intensity inside a specified range (e.g. non-negative and below a saturation threshold):
+- keep only spectra with *average* intensity inside a specified range (e.g. non-negative and below a saturation threshold):
   ```{r filter spc avg intensity between}
   flu %>% 
     filter (rowMeans (spc) %>% between (0, 500))
   ```
+  Here, `any_wl()` or `all_wl()` are not needed: the spectra are already summarized into a single intensity value by `rowMeans()`.
+  The condition therefore evaluates to a one logical value per spectrum already - which is what is needed.
 
-If the rows should be selected by indices rather than a condition, use [slice()](https://dplyr.tidyverse.org/reference/slice.html):
+To select rows by indices rather than a condition, use [slice()](https://dplyr.tidyverse.org/reference/slice.html):
 
 ```{r slice}
-  chondro %>% slice (1:3)
-  chondro %>% slice (800 : n())
-  chondro %>% slice (-10 : -n())
-  flu %>% slice (1, 3, 5)
+chondro %>% 
+  slice (1:3)
+
+chondro %>% 
+  slice (800 : n())
+
+chondro %>% 
+  slice (-10 : -n())
+
+flu %>% 
+  slice (1, 3, 5)
 ```
 
-Also, `head` and `tail` work as usual.
+Also, `head()` and `tail()` work as usual.
 
-## Select particular columns
+## Selecting particular data columns: `select()`
 
-[dplyr::select()](https://dplyr.tidyverse.org/reference/select.html)
+`select()` selects or discards particular columns from a `hyperSpec` object. 
+If the spectra matrix (colum `spc`) is included in the selection, the result is still a `hyperSpec` object:
+
+```{r, results='show'}
+chondro %>% 
+  select (clusters, spc)
+```
+
+If the spectra matrix is excluded, the result is a `data.frame`:
+
+```{r, results='show'}
+flu %>% 
+  select (-spc) 
+```
+
+To convert such a `data.frame` into a `hyperSpec` object again, use `as.hyperSpec`:
+
+```{r, results='show'}
+flu %>% 
+  select (-spc) %>%
+  as.hyperSpec ()
+```
+
+The resulting `hyperSpec` object has 0 wavelengths: its `$spc` column contains a spectra matrix with 0 columns, and its wavelength vector is also of length 0.
+Behind the scenes, the `data.frame` returned by `select()` gets an attribute `labels` which stores the labels of the `hyperSpec` object.
+`as.hyperSpec()` restores the labels from this attribute (if available).
+Therfore, the "back-converted" `hyperSpec` object has its labels preserved.
+
+## Selecting wavelength ranges
+
+TODO
+
+
+---
+```{r, results='show'}
+sessionInfo()
+```
+
