@@ -1,6 +1,12 @@
 language: r
+r: release
 r_binary_packages:
   - dplyr
   - magrittr
   - testthat
   - knitr
+  - devtools
+script:
+- R -e "devtools::document ('.')"
+- R CMD build .
+- R CMD check *tar.gz

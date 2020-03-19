@@ -1,4 +1,4 @@
-##' cbsvm unit tests
+##' Run unit tests
 ##'
 ##' If [testthat::testthat()] is available, run the unit tests and
 ##' display the results.
