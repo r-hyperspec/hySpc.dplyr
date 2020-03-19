@@ -3,6 +3,7 @@
 S3method(filter,hyperSpec)
 S3method(select,hyperSpec)
 S3method(slice,hyperSpec)
+export(.fix_spc_colnames)
 export(between)
 export(hyperSpec.dplyr.unittest)
 exportMethods(between)
