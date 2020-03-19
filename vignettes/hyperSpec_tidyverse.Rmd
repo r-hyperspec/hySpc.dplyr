@@ -9,7 +9,7 @@ vignette: >
   %\VignetteIndexEntry{hyperSpec.tidyverse}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  %\VignetteDepends{hyperSpec,tidyverse,magrittr}
+  %\VignetteDepends{hyperSpec,magrittr}
 ---
 
 ```{r setup, include = FALSE}

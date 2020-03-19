@@ -21,12 +21,15 @@ Imports:
     testthat,
     methods
 Suggests:
-    knitr
+    knitr,
+    dtplyr
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Roxygen: list(markdown = TRUE)
 Collate: 
     'unittest.R'
     'between.R'
     'filter.R'
+    'fix_spc_colnames.R'
     'select.R'
+    'slice.R'
