@@ -1,5 +1,6 @@
 language: r
 r: release
+warnings_are_errors: false
 r_binary_packages:
   - dplyr
   - magrittr
