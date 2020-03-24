@@ -128,6 +128,13 @@ Behind the scenes, the `data.frame` returned by `select()` gets an attribute `la
 `as.hyperSpec()` restores the labels from this attribute (if available).
 Therfore, the "back-converted" `hyperSpec` object has its labels preserved.
 
+## Renaming extra data columns: `rename()`
+`rename()` renames extra data columns from the `hyperSpec` object. Unlike `select()`, `rename()` keeps all the variables of the data frame intact.
+```{r, results='show'}
+chondro %>% 
+  rename(region = clusters)
+```
+
 ## Selecting wavelength ranges
 
 TODO

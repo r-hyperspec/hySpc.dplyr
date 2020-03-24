@@ -33,3 +33,4 @@ Collate:
     'fix_spc_colnames.R'
     'select.R'
     'slice.R'
+    'rename.R'
