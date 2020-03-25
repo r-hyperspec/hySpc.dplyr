@@ -39,3 +39,48 @@ select.hyperSpec <- function(.data, ...) {
     .data
   }
 }
+
+# Begin unit testing (UT)
+.test(select.hyperSpec) <- function(){
+  context("select")
+
+  # UT1
+  test_that("selecting data columns correctly", {
+    df <- data.frame(a = NA, b = NA)
+    expect_identical(
+      select(df, a),
+      data.frame(a = NA)
+    )
+  })
+
+  # UT2
+  test_that("using select to rename data columns", {
+    df <- data.frame(a = NA, b = NA)
+    expect_identical(
+      select(df, a_newcolname = a),
+      data.frame(a_newcolname = NA)
+    )
+  })
+
+  # UT3
+  test_that("dropping spectra column", {
+    tmp <- chondro@data
+    tmp$spc <- NULL
+    expect_equivalent(
+      select(chondro, x, y),
+      data.frame(x = chondro@data$x, y = chondro@data$y)
+    )
+    expect_equivalent(
+      select(chondro, filename, clusters),
+      data.frame(filename = chondro@data$filename, y = chondro@data$clusters, stringsAsFactors = FALSE)
+    )
+    expect_equivalent(
+      select(chondro, -spc),
+      tmp
+    )
+  })
+
+  # UTTODO: Create unit test for hyperSpec object nuances.
+
+
+}
