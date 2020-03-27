@@ -24,7 +24,6 @@
 #' chondro %>% rename (spc2 = spc) # => data.frame
 rename.hyperSpec <- function(.data, ...){
   res <- dplyr::rename(.data@data, ...)
-  res
   # Not sure if I need to check if 'spc' has been renamed
 }
 
@@ -59,6 +58,11 @@ rename.hyperSpec <- function(.data, ...){
     grouped_df <- group_by(data.frame(a = NA, b = NA), a)
     rename_grouped_df <- rename(grouped_df, a_newcolname = a)
     expect_equal(group_vars(rename_grouped_df), "a_newcolname")
+  })
+
+  # UT4
+  test_that("renaming spectrum column throws error", {
+    expect_error(chk.hy(rename(chondro, spc_newcolname = spc)))
   })
 
   # UTTODO: Create unit test for hyperSpec object nuances.
