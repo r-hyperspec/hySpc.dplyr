@@ -6,6 +6,7 @@
 #' @inheritParams dplyr::between
 #' @export
 #' @include unittest.R
+#' @importFrom testthat context
 #' @family between
 #'
 setGeneric ("between", useAsDefault = dplyr::between)
