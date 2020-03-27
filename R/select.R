@@ -24,20 +24,44 @@
 #'
 #' chondro %>% select (-spc) %>% head # all columns but $spc => data.frame same as chondro$..
 #' chondro %>% select (-spc) %>% as.hyperSpec() # hyperSpec object with 0 wavelengths
-
-
 select.hyperSpec <- function(.data, ...) {
 
   res <- select (.data@data, ...)
+  labels <- labels (.data) [c ( ".wavelength", colnames (res))]
 
   if (is.null (res$spc)){
     # use attribute to have correct labels when piping into `as.hyperSpec`
-    attr (res, "labels") <- labels (.data) [c ( ".wavelength", "spc", colnames (.data))]
+    attr (res, "labels") <- labels
     res
   }else{
     .data@data <- res
-    labels (.data) <- labels (.data) [c ( ".wavelength", colnames (.data))]
+    labels (.data) <- labels
     .data
   }
+}
+
+.test (select.hyperSpec) <- function(){
+  context("select.hyperSpec")
+
+  test_that("labels attribute when returning data.frame", {
+
+    ref_labels <- labels (chondro [,c("x", "y")])
+
+    # label $spc is added automatically by initialize -
+    # it is not supposed to be returned by select.hyperSpec
+    ref_labels <- ref_labels [!grepl ("spc", ref_labels)]
+    ref_labels <- ref_labels [order (names (ref_labels))]
+
+    test_labels <- attr (select (chondro, x, y), "labels")
+    test_labels <- test_labels [order (names (test_labels))]
+
+    expect_equal(test_labels, ref_labels)
+  })
+
+  test_that("labels attribute when returning data.frame", {
+    expect_equal(labels (as.hyperSpec(select (chondro, x, y))),
+                 labels (chondro [,c("x", "y")])
+    )
+  })
 }
 
