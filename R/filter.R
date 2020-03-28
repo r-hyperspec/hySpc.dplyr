@@ -12,6 +12,11 @@
 #' @seealso [dplyr::filter()]
 #' @importFrom dplyr filter
 #' @importFrom hyperSpec chk.hy
+#' @importFrom testthat expect_equal
+#' @importFrom testthat expect_equivalent
+#' @importFrom testthat expect_error
+#' @importFrom testthat skip
+#' @importFrom hyperSpec flu
 #' @import magrittr
 #' @export
 #'

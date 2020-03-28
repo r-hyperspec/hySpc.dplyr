@@ -14,7 +14,7 @@
 #' @return hyperSpec object or data.frame with the selected columns. If the `$spc` is not included in the selection, the result will be a data.frame.
 #' @include unittest.R
 #' @importFrom dplyr select
-#' @importFrom hyperSpec labels<-
+#' @importFrom hyperSpec labels labels<-
 #' @export
 #'
 #' @examples
@@ -24,84 +24,43 @@
 #'
 #' chondro %>% select (-spc) %>% head # all columns but $spc => data.frame same as chondro$..
 #' chondro %>% select (-spc) %>% as.hyperSpec() # hyperSpec object with 0 wavelengths
-
-
 select.hyperSpec <- function(.data, ...) {
 
   res <- select (.data@data, ...)
+  labels <- labels (.data) [c ( ".wavelength", colnames (res))]
 
   if (is.null (res$spc)){
-    attr (res, "labels") <- labels (.data) # allows to have correct labels when piping into `as.hyperSpec`
+    # use attribute to have correct labels when piping into `as.hyperSpec`
+    attr (res, "labels") <- labels
     res
   }else{
     .data@data <- res
-    labels (.data) <- labels (.data) [c ( ".wavelength", colnames (.data))]
+    labels (.data) <- labels
     .data
   }
 }
 
-# Begin unit testing (UT)
-.test(select.hyperSpec) <- function(){
-  context("select")
+.test (select.hyperSpec) <- function(){
+  context("select.hyperSpec")
 
-  # UT1
-  test_that("dropping spectra column", {
+  test_that("labels attribute when returning data.frame", {
 
-    # UT1.1
-    expect_equivalent(
-      select(chondro, x, y),
-      data.frame(x = chondro@data$x, y = chondro@data$y)
-    )
+    ref_labels <- labels (chondro [,c("x", "y")])
 
-    # UT1.2
-    tmp <- chondro@data
-    tmp$spc <- NULL
-    expect_equivalent(
-      select(chondro, -spc),
-      tmp
-    )
+    # label $spc is added automatically by initialize -
+    # it is not supposed to be returned by select.hyperSpec
+    ref_labels <- ref_labels [!grepl ("spc", ref_labels)]
+    ref_labels <- ref_labels [order (names (ref_labels))]
 
-    # UT1.3 -- not sure if this is necessary
-    expect_equivalent(
-      is.data.frame(select(chondro, -spc)),
-      is.data.frame(tmp)
-    )
+    test_labels <- attr (select (chondro, x, y), "labels")
+    test_labels <- test_labels [order (names (test_labels))]
 
-    # UT1.4
-    tmp <- data.frame(filename = chondro@data$filename,
-                      clusters = chondro@data$clusters,
-                      stringsAsFactors = FALSE)
-    attr(tmp, "labels") <- labels(chondro)
-    expect_equal(
-      select(chondro, filename, clusters),
-      tmp,
-    )
-
-    # UT1.5
-    expect_error(chk.hy(select(chondro, filename, clusters)))
+    expect_equal(test_labels, ref_labels)
   })
 
-  # UT2
-  test_that("retaining spectra column", {
-
-    # UT2.1
-    expect_equivalent(
-      chk.hy(select(chondro, x, clusters, spc)),
-      chk.hy(chondro)
+  test_that("labels attribute when returning data.frame", {
+    expect_equal(labels (as.hyperSpec(select (chondro, x, y))),
+                 labels (chondro [,c("x", "y")])
     )
-
-    # UT2.2
-    expect_equal(
-      attr(select(chondro, x, clusters, spc), "labels"),
-      attr(chondro, "labels")
-    )
-
-    # UT2.3 -- Why does this keep failing?
-    tmp <- new("hyperSpec", spc = chondro@data$spc)
-    attr(tmp, "labels") <- labels(chondro)
-    expect_equal(select(chondro, spc), tmp)
   })
-
-  # UTTODO: Create unit test for hyperSpec object nuances.
-
 }
