@@ -24,8 +24,7 @@
 #' chondro %>% rename (spc2 = spc) # => data.frame
 rename.hyperSpec <- function(.data, ...){
   res <- dplyr::rename(.data@data, ...)
-  chk.hy(res)
-  res
+  # Not sure if I need to check if 'spc' has been renamed
 }
 
 # Begin unit testing (UT)
