@@ -9,12 +9,12 @@
 #' @importFrom testthat context
 #' @family between
 #'
-setGeneric ("between", useAsDefault = dplyr::between)
+setGeneric("between", useAsDefault = dplyr::between)
 
-.between.matrix <- function (x, left, right){
-  res <- dplyr::between (x, left, right)
-  dim (res) <- dim (x)
-  dimnames (res) <- dimnames(x)
+.between.matrix <- function(x, left, right) {
+  res <- dplyr::between(x, left, right)
+  dim(res) <- dim(x)
+  dimnames(res) <- dimnames(x)
 
   res
 }
@@ -25,23 +25,24 @@ setGeneric ("between", useAsDefault = dplyr::between)
 #' @export
 #'
 #' @examples
-#' between (flu [[]], 100, 400)
+#' between(flu [[]], 100, 400)
 #' @importFrom methods setMethod
 setMethod("between", signature = "matrix", .between.matrix)
 
-.test (.between.matrix) <- function (){
-  context ("between")
+.test(.between.matrix) <- function() {
+  context("between")
 
-  test_that("correct matrix behaviour",{
-    expect_equal (between (flu[[]], 100, 400),
-                  flu[[]] >= 100 & flu[[]] <= 400)
+  test_that("correct matrix behaviour", {
+    expect_equal(
+      between(flu[[]], 100, 400),
+      flu[[]] >= 100 & flu[[]] <= 400
+    )
   })
-
 }
 
 
-.between.hyperSpec <- function (x, left, right){
-  between (x$spc, left, right)
+.between.hyperSpec <- function(x, left, right) {
+  between(x$spc, left, right)
 }
 
 #' @family between
@@ -49,15 +50,17 @@ setMethod("between", signature = "matrix", .between.matrix)
 #' @export
 #'
 #' @examples
-#' between (flu [[]], 100, 400)
+#' between(flu [[]], 100, 400)
 setMethod("between", signature = "hyperSpec", .between.hyperSpec)
 
 
-.test (.between.hyperSpec) <- function (){
-  context ("between")
+.test(.between.hyperSpec) <- function() {
+  context("between")
 
-  test_that("correct hyperSpec behaviour",{
-    expect_equal (between (flu, 100, 400),
-                  flu >= 100 & flu <= 400)
+  test_that("correct hyperSpec behaviour", {
+    expect_equal(
+      between(flu, 100, 400),
+      flu >= 100 & flu <= 400
+    )
   })
 }
