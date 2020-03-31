@@ -24,7 +24,7 @@ Suggests:
     knitr,
     dtplyr
 VignetteBuilder: knitr
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
 Collate: 
     'unittest.R'

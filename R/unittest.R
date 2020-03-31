@@ -19,25 +19,26 @@
 ##'
 ##' hyperSpec.dplyr.unittest ()
 ##'
-hyperSpec.dplyr.unittest <- function (){
-  if (!requireNamespace("testthat", quietly=TRUE)) {
+hyperSpec.dplyr.unittest <- function() {
+  if (!requireNamespace("testthat", quietly = TRUE)) {
     warning("Package testthat required to run the unit tests.")
     return(NA)
   }
-  if (! "package:testthat" %in% search ())
+  if (!"package:testthat" %in% search()) {
     attachNamespace("testthat")
+  }
 
-  tests <- eapply(env = getNamespace ("hyperSpec.tidyverse"), FUN = get.test, all.names=TRUE)
-  tests <- tests [! sapply (tests, is.null)]
+  tests <- eapply(env = getNamespace("hyperSpec.tidyverse"), FUN = get.test, all.names = TRUE)
+  tests <- tests [!sapply(tests, is.null)]
 
   reporter <- SummaryReporter$new()
   lister <- ListReporter$new()
   reporter <- MultiReporter$new(reporters = list(reporter, lister))
 
   with_reporter(reporter = reporter, start_end_reporter = TRUE, {
-    for (t in seq_along(tests)){
-      lister$start_file(names (tests [t]))
-      tests [[t]] ()
+    for (t in seq_along(tests)) {
+      lister$start_file(names(tests [t]))
+      tests [[t]]()
     }
     get_reporter()$.end_context()
   })
@@ -47,14 +48,14 @@ hyperSpec.dplyr.unittest <- function (){
 
 ##' @noRd
 {
-  `.test<-` <- function (f, value) {
-    attr (f, "test") <- value
+  `.test<-` <- function(f, value) {
+    attr(f, "test") <- value
     f
   }
 }
 
 ##' get test that is attached to object as "test" attribute
 ##' @noRd
-get.test <- function (object)
-  attr (object, "test")
-
+get.test <- function(object) {
+  attr(object, "test")
+}

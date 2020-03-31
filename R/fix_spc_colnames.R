@@ -5,13 +5,13 @@
 #' @return hyperSpec object with wavelengths in column names of `$spc`
 #' @md
 #' @export
-.fix_spc_colnames <- function(spc){
-  colnames (spc@data$spc) <- signif (spc@wavelength, digits = 6)
+.fix_spc_colnames <- function(spc) {
+  colnames(spc@data$spc) <- signif(spc@wavelength, digits = 6)
 
   spc
 }
 
-.test (.fix_spc_colnames) <- function(){
+.test(.fix_spc_colnames) <- function() {
   context(".fix_spc_colnames")
 
   test_that("colnames get fixed", {
@@ -19,6 +19,6 @@
     colnames(tmp@data$spc) <- NULL
 
     tmp <- .fix_spc_colnames(tmp)
-    expect_equal(colnames (tmp@data$spc), as.character (wl (tmp)))
+    expect_equal(colnames(tmp@data$spc), as.character(wl(tmp)))
   })
 }

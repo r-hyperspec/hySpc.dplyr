@@ -20,13 +20,20 @@
 #'
 #' @examples
 #'
-#' chondro %>% rename (region = clusters) %>% head # spc not renamed => hyperSpec object
-#' chondro %>% rename (spc2 = spc) # => data.frame
+#' chondro %>% rename (region = clusters) %>% head => hyperSpec object
+#' chondro %>% rename (spc2 = spc) => renaming spc should result in an error
 rename.hyperSpec <- function(.data, ...){
-  res <- dplyr::rename(.data@data, ...)
-  chk.hy(res)
-  res
-  # Not sure if I need to check if 'spc' has been renamed
+  res <- rename(.data@data, ...)
+
+  # Check if the spc column was renamed
+  if(!'spc' %in% colnames(res)){
+    # Throw an error if spc column is missing
+    stop("Error: `spc` column is missing")
+  }else{
+    .data@data <- res
+    chk.hy(.data)
+    .data
+  }
 }
 
 # Begin unit testing (UT)
@@ -34,33 +41,8 @@ rename.hyperSpec <- function(.data, ...){
   context("rename")
 
   # UT1
-  test_that("renaming data columns correctly", {
-    df <- data.frame(a = NA, b = NA)
-    expect_identical(
-      rename(df, a = a, b = b),
-      data.frame(a = NA, b = NA)
-    )
-    expect_identical(
-      rename(df, a_newcolname = a, b_newcolname = b),
-      data.frame(a_newcolname = NA, b_newcolname = NA)
-    )
+  test_that("renaming `spc` throws an error", {
+    expect_error(rename(chondro, spc_newname = spc))
   })
 
-  # UT2
-  test_that("renaming perserves order", {
-    df <- data.frame(a = NA, b = NA)
-    expect_identical(
-      rename(df, b_newcolname = b, a_newcolname = a),
-      data.frame(a_newcolname = NA, b_newcolname = NA)
-    )
-  })
-
-  # UT3
-  test_that("renaming preserves grouping", {
-    grouped_df <- group_by(data.frame(a = NA, b = NA), a)
-    rename_grouped_df <- rename(grouped_df, a_newcolname = a)
-    expect_equal(group_vars(rename_grouped_df), "a_newcolname")
-  })
-
-  # UTTODO: Create unit test for hyperSpec object nuances.
 }
