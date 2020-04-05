@@ -31,6 +31,6 @@ Collate:
     'between.R'
     'filter.R'
     'fix_spc_colnames.R'
+    'rename.R'
     'select.R'
     'slice.R'
-    'rename.R'
