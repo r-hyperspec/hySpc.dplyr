@@ -23,7 +23,6 @@
 #' chondro %>%
 #'   rename (region = clusters) %>%
 #'   head # results in a hyperSpec object
-#'
 rename.hyperSpec <- function(.data, ...){
   # Check if user passed in a hyperSpec object
   chk.hy(.data)

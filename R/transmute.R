@@ -10,13 +10,13 @@
 #'
 #'
 #'
-#' @inheritParams dplyr::mutate
-#' @seealso [dplyr::mutate()]
+#' @inheritParams dplyr::transmute
+#' @seealso [dplyr::transmute()]
 #' @return hyperSpec object. If `$spc` is renamed, the result is an error.
 #' @include unittest.R
 #' @importFrom rlang quo_name
 #' @importFrom rlang quo_get_expr
-#' @importFrom dplyr mutate
+#' @importFrom dplyr transmute
 #' @importFrom hyperSpec chk.hy
 #' @importFrom hyperSpec labels labels<-
 #' @export
@@ -25,25 +25,25 @@
 #'
 #' chondro %>%
 #'   transmute (y, x, filename, spc) %>%
-#'   head # results in a hyperSpec object
+#'   head # => results in a hyperSpec object
 #' chondro %>%
-#'   transmute (y, x) =>
-#    results in a data frame
+#'   transmute (y, x)
+#'   # => results in a data frame
 #' chondro %>%
-#'   transmute (y, x, filename, spc = spc*2) =>
-#'   results in a hyperSpec object
+#'   transmute (y, x, filename, spc = spc*2)
+#'   # => results in a hyperSpec object
 #' flu %>%
-#'   transmute (spc, filename, c) =>
-#'   results in a hyperSpec object
+#'   transmute (spc, filename, c)
+#'   # => results in a hyperSpec object
 #' flu %>%
 #'   transmute (filename, c) =>
 #'   results in a data frame
 #' flu %>%
-#'   transmute (c=c*2, c=c*0) =>
-#'   results in a data frame
+#'   transmute (c=c*2, c=c*0)
+#'   # => results in a data frame
 #' flu %>%
-#'   transmute (c=c*2, c=c*0, spc = c) =>
-#'   throws an error
+#'   transmute (c=c*2, c=c*0, spc = c)
+#'   # => throws an error
 transmute.hyperSpec <- function(.data, ...){
   # Check if user passed in a hyperSpec object
   chk.hy(.data)
