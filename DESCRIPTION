@@ -19,7 +19,8 @@ Depends:
     magrittr
 Imports: 
     testthat,
-    methods
+    methods,
+    rlang
 Suggests:
     knitr,
     dtplyr
