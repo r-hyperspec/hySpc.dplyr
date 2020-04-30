@@ -2,7 +2,7 @@
 #'
 #' rename extra data columns of hyperSpec objects.
 #' Special column `$spc` contains the spectra matrix.
-#' Unlike dplyr::select(), dplyr::rename() keeps all the variables of the data frame intact.
+#' Unlike dplyr::select() dplyr::rename() keeps all the variables of the data frame intact.
 #' However, if `$spc` is renamed, the result is an error instead of a hyperSpec object.
 #'
 #'
@@ -23,9 +23,11 @@
 #' chondro %>%
 #'   rename (region = clusters) %>%
 #'   head # results in a hyperSpec object
+#'
 rename.hyperSpec <- function(.data, ...){
   # Check if user passed in a hyperSpec object
   chk.hy(.data)
+  validObject(.data)
   # Use dplyr::rename() to rename hyperSpec object data slot
   res <- rename(.data@data, ...)
   # Check if $spc was renamed

@@ -34,3 +34,5 @@ Collate:
     'rename.R'
     'select.R'
     'slice.R'
+    'transmute.R'
+    
