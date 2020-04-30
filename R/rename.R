@@ -26,7 +26,6 @@
 rename.hyperSpec <- function(.data, ...){
   # Check if user passed in a hyperSpec object
   chk.hy(.data)
-  validObject(.data)
   # Use dplyr::rename() to rename hyperSpec object data slot
   res <- rename(.data@data, ...)
   # Check if $spc was renamed

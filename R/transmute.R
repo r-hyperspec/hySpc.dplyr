@@ -28,26 +28,22 @@
 #'   head # => results in a hyperSpec object
 #' chondro %>%
 #'   transmute (y, x)
-#'   # => results in a data frame
+#'   head # => results in a data frame
 #' chondro %>%
 #'   transmute (y, x, filename, spc = spc*2)
-#'   # => results in a hyperSpec object
+#'   head # => results in a hyperSpec object
 #' flu %>%
 #'   transmute (spc, filename, c)
-#'   # => results in a hyperSpec object
+#'   head # => results in a hyperSpec object
 #' flu %>%
-#'   transmute (filename, c) =>
-#'   results in a data frame
+#'   transmute (filename, c)
+#'   head # => results in a data frame
 #' flu %>%
 #'   transmute (c=c*2, c=c*0)
 #'   # => results in a data frame
-#' flu %>%
-#'   transmute (c=c*2, c=c*0, spc = c)
-#'   # => throws an error
 transmute.hyperSpec <- function(.data, ...){
   # Check if user passed in a hyperSpec object
   chk.hy(.data)
-  validObject(.data)
   # Collect function arguments
   args <- enquos(...)
   args_names <- names(args)
