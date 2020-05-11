@@ -19,17 +19,21 @@ Depends:
     magrittr
 Imports: 
     testthat,
-    methods
+    methods,
+    rlang
 Suggests:
     knitr,
     dtplyr
 VignetteBuilder: knitr
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
 Collate: 
     'unittest.R'
     'between.R'
     'filter.R'
     'fix_spc_colnames.R'
+    'hy_update_labels.R'
+    'rename.R'
     'select.R'
     'slice.R'
+    'transmute.R'
