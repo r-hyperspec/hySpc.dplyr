@@ -13,6 +13,7 @@
 #' @seealso [dplyr::select()]
 #' @return hyperSpec object or data.frame with the selected columns. If the `$spc` is not included in the selection, the result will be a data.frame.
 #' @include unittest.R
+#' @include hy_update_labels.R
 #' @importFrom dplyr select
 #' @importFrom hyperSpec labels labels<-
 #' @export
@@ -32,17 +33,8 @@
 #'   as.hyperSpec() # hyperSpec object with 0 wavelengths
 select.hyperSpec <- function(.data, ...) {
   res <- select(.data@data, ...)
-  labels <- labels(.data) [c(".wavelength", colnames(res))]
-
-  if (is.null(res$spc)) {
-    # use attribute to have correct labels when piping into `as.hyperSpec`
-    attr(res, "labels") <- labels
-    res
-  } else {
-    .data@data <- res
-    labels(.data) <- labels
-    .data
-  }
+  # Update labels
+  hy_update_labels(.data, res)
 }
 
 .test(select.hyperSpec) <- function() {

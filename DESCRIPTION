@@ -32,8 +32,8 @@ Collate:
     'between.R'
     'filter.R'
     'fix_spc_colnames.R'
+    'hy_update_labels.R'
     'rename.R'
     'select.R'
     'slice.R'
     'transmute.R'
-    

@@ -14,6 +14,7 @@
 #' @seealso [dplyr::transmute()]
 #' @return hyperSpec object. If `$spc` is renamed, the result is an error.
 #' @include unittest.R
+#' @include hy_update_labels.R
 #' @importFrom rlang quo_name
 #' @importFrom rlang quo_get_expr
 #' @importFrom dplyr transmute
@@ -85,16 +86,7 @@ transmute.hyperSpec <- function(.data, ...){
   transmute_args <- paste(cols2get, collapse=", ")
   res <- eval(parse(text = paste("transmute(tmp_hy@data,", transmute_args, ")")))
   # Update labels
-  labels <- labels(.data)[c(".wavelength", colnames(res))]
-  if(is.null(res$spc)){
-    # use attribute to have correct labels when piping into `as.hyperSpec`
-    attr(res, "labels") <- labels
-    res
-  }else{
-    .data@data <- res
-    labels(.data) <- labels
-    .data
-  }
+  hy_update_labels(.data, res)
 }
 
 # Begin unit testing (UT)
