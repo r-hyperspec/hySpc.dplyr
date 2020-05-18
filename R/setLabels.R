@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' flu %>%
-#'  setLabels (r = "r / μm", phi = expression (phi))
+#'  setLabels (r = "r / μm", phi = expression(phi))
 #' flu %>%
 #'  setLabels (.wavelength = "f / THz", c = "c / ml")
 #'
