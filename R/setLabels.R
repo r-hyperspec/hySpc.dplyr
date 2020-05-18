@@ -9,9 +9,7 @@
 #' @importFrom rlang quo_get_expr
 #'
 #' @examples
-#' flu %>%
-#'  setLabels (r = "r / μm", phi = expression(phi))
-#' flu %>%
+#' laser %>%
 #'  setLabels (.wavelength = "f / THz", c = "c / ml")
 #'
 #' @export
