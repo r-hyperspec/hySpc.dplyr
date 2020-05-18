@@ -135,8 +135,25 @@ chondro %>%
   rename(region = clusters)
 ```
 
+## Mutate hyperSpec data columns
+`mutate()` mutates the data columns of `hyperspec` objects. Unlike `transmute()` `mutate()`adds new variables and keeps existing ones.
+
+```{r mutate}
+chondro %>%
+  mutate (y, x, filename, spc) %>%
+  setLabels(y = "x", x = "y") 
+
+chondro %>%
+  mutate (y, x) %>% 
+  setLabels(y = expression("x"), x = expression("y"))
+
+chondro %>%
+  mutate (y, x, filename, spc = spc*2) %>%
+  head
+```
+
 ## Transmute hyperSpec data columns
-`transmute()` mutates the data columns of `hyperspec` objects. Unlike `mutate()` `transmute()`adds new variables but drops existing ones.
+`transmute()` mutates the data columns of `hyperspec` objects. Unlike `mutate()` `transmute()`adds and only keeps new variables.
 
 ```{r transmute}
 chondro %>%

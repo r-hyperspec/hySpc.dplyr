@@ -13,7 +13,7 @@
 #' @seealso [dplyr::select()]
 #' @return hyperSpec object or data.frame with the selected columns. If the `$spc` is not included in the selection, the result will be a data.frame.
 #' @include unittest.R
-#' @include hy_update_labels.R
+#' @include setLabels.R
 #' @importFrom dplyr select
 #' @importFrom hyperSpec labels labels<-
 #' @export
@@ -34,7 +34,7 @@
 select.hyperSpec <- function(.data, ...) {
   res <- select(.data@data, ...)
   # Update labels
-  hy_update_labels(.data, res)
+  setLabels.select(.data, res)
 }
 
 .test(select.hyperSpec) <- function() {
