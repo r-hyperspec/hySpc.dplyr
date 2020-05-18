@@ -1,6 +1,6 @@
 language: r
 r: release
-warnings_are_errors: false
+warnings_are_errors: true
 script:
 - R -e "install.packages (c ('roxygen2', 'dbplyr')); roxygen2::roxygenize ('.')"
 - R CMD build .
