@@ -61,39 +61,50 @@
 #'   # => results in a data frame
 #' @export
 mutate.hyperSpec <- function(.data, ...) {
+    
     # Check if user passed in a hyperSpec object
     chk.hy(.data)
+    
     # Collect mutate arguments
-    ls_hy <- get_args(.data, ...)
+    mutate_args <- get_args(.data, ...)
+    
     # Pass mutate arguments to dplyr::mutate
-    .data@data <- eval(parse(text = paste("mutate(ls_hy$tmp_data,", ls_hy$args, ")")))
+    .data@data <- eval(parse(text = paste("mutate(mutate_args$tmp_data,", mutate_args$args, ")")))
     .data
 }
 
 #' @export
 transmute.hyperSpec <- function(.data, ...) {
+    
     # Check if user passed in a hyperSpec object
     chk.hy(.data)
+    
     # Collect transmute arguments
-    ls_hy <- get_args(.data, ...)
+    transmute_args <- get_args(.data, ...)
+    
     # Pass transmute arguments to dplyr::transmute
-    res <- eval(parse(text = paste("transmute(ls_hy$tmp_data,", ls_hy$args, ")")))
+    res <- eval(parse(text = paste("transmute(transmute_args$tmp_data,", transmute_args$args, ")")))
+    
     # Update labels
     setLabels.select(.data, res)
 }
 # Helper(s) -----------------------------------------------
 
 get_args <- function(.data, ...) {
+    
     # Collect function arguments
     args <- enquos(...)
     args_names <- names(args)
+    
     if (length(args) == 0L) {
       return(NULL)
     }
+    
     # Prepare a copy of the original hyperSpec object
     tmp_hy <- .data
     cols2get <- vector() # create a list to save the column names to
     tmp_spc <- tmp_hy@data[c('spc')] # store original $spc column
+    
     # Prepare function arguments for transmute()
     # assumption: the variable name and expr
     # share the same index (i.e., args[i] is the expr for the variable names(args[i]))
@@ -112,6 +123,7 @@ get_args <- function(.data, ...) {
             cols2get <- c(cols2get, 'spc') # ensures there is, and only one `spc` column
           }
         } else {
+          
           # Throw an error
           stop("$spc must be mutated from a $spc column")
         }
@@ -121,6 +133,7 @@ get_args <- function(.data, ...) {
         cols2get <- c(cols2get, assign)
       }
     }
+    
     # Hand off columns (i.e., prepared arguments) to mutate()/transmute()
     ls_hy <- list(tmp_data = tmp_hy@data, args = paste(cols2get, collapse=", "))
 }
