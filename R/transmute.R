@@ -46,7 +46,7 @@ transmute.hyperSpec <- function(.data, ...){
   # Check if user passed in a hyperSpec object
   chk.hy(.data)
   # Collect function arguments
-  args <- enquos(...)
+  args <- rlang::enquos(...)
   args_names <- names(args)
   if(length(args) == 0L){
     return(NULL)
