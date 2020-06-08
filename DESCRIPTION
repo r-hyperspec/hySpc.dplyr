@@ -1,7 +1,7 @@
-Package: hyperSpec.tidyverse
+Package: hySpc.dplyr
 Type: Package
 Title: fortify hyperSpec for use with tidyverse
-Version: 0.1.0
+Version: 0.2.0
 Maintainer: Claudia Beleites <Claudia.Beleites@chemometrix.gmbh>
 Authors@R: c(
     person("Claudia",   "Beleites",  role = c("aut","cre"), email = "Claudia.Beleites@chemometrix.gmbh")
