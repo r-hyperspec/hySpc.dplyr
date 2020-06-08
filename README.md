@@ -11,4 +11,5 @@ status](https://www.r-pkg.org/badges/version/hyperSpec.tidyverse)](https://cran.
 [![Codecov test
 coverage](https://codecov.io/gh/hyperSpec.tidyverse/branch/master/graph/badge.svg)](https://codecov.io/gh/hyperSpec.tidyverse?branch=master)
 -->
+[![R build status](https://github.com/r-hyperspec/hySpc.tidyverse/workflows/R-CMD-check/badge.svg)](https://github.com/r-hyperspec/hySpc.tidyverse/actions)
 <!-- badges: end -->
