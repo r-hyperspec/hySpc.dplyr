@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - master
+      - feature/R_CMD_CHECK_on_GitHubActions
   pull_request:
     branches:
       - master
