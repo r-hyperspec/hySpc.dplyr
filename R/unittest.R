@@ -28,7 +28,7 @@ hyperSpec.dplyr.unittest <- function() {
     attachNamespace("testthat")
   }
 
-  tests <- eapply(env = getNamespace("hyperSpec.tidyverse"), FUN = get.test, all.names = TRUE)
+  tests <- eapply(env = getNamespace("hySpc.dplyr"), FUN = get.test, all.names = TRUE)
   tests <- tests [!sapply(tests, is.null)]
 
   reporter <- SummaryReporter$new()
