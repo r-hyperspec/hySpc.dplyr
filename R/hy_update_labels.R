@@ -1,6 +1,7 @@
 #' Ensure that hyperSpec and non hyperSpec objects have the correct labels
 #'
-#'
+#' @param .data FIXME: it should be explained what `.data` is.
+#' @param res FIXME: it should be explained what `res` is.
 #' @return Object with the correct labels
 #' @md
 #' @export
