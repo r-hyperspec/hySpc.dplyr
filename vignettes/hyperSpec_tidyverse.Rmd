@@ -1,19 +1,19 @@
 ---
-title: "hyperSpec.tidyverse"
+title: "hySpc.dplyr"
 author: "Claudia Beleites"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     fig_caption: yes
 vignette: >
-  %\VignetteIndexEntry{hyperSpec.tidyverse}
+  %\VignetteIndexEntry{hySpc.dplyr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
   %\VignetteDepends{hyperSpec,magrittr}
 ---
 
 ```{r setup, include = FALSE}
-library(hyperSpec.tidyverse)
+library(hySpc.dplyr)
 library(hyperSpec)
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 ```
 
 This vignette introduces package `hyperSpec.tidytverse`.  
-`hyperSpec.tidyverse` "fortifies" `hyperSpec` objects so that they can be used in `tidyverse` style.
+`hySpc.dplyr` "fortifies" `hyperSpec` objects so that they can be used in `tidyverse` style.
 In particular, this [piping](https://magrittr.tidyverse.org/) becomes convenient. 
 On a more technical level, `hyperSpec.tidytverse` provides functions such as `filter`, `select`, and so on for `hyperSpec` objects.
 
