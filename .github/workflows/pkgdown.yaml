@@ -1,6 +1,8 @@
 on:
   push:
-    branches: master
+    branches:
+      - master
+      - feature/build_pkgdown
 
 name: Build pkgdown website
 
