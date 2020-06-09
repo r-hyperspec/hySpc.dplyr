@@ -37,3 +37,6 @@ Collate:
     'select.R'
     'slice.R'
     'transmute.R'
+    'mutate.R'
+    'setLabels.R'
+    
