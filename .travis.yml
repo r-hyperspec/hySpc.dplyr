@@ -1,5 +1,6 @@
 language: r
 r: release
+cache: packages
 warnings_are_errors: true
 script:
 - R -e "install.packages (c ('roxygen2', 'dbplyr')); roxygen2::roxygenize ('.')"
