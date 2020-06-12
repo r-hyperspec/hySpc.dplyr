@@ -11,6 +11,7 @@
 #' @include setLabels.R
 #' @importFrom hyperSpec chk.hy
 #' @importFrom hyperSpec labels labels<-
+#' @importFrom rlang enquos
 #' @importFrom rlang quo_name
 #' @importFrom rlang quo_get_expr
 #' @importFrom dplyr mutate
@@ -90,7 +91,7 @@ mutate.hyperSpec <- function(.data, ...) {
 #' @examples
 #'
 #' fauxCell %>%
-#'   transmute (x, y)
+#'   transmute (x, y) %>%
 #'   head # => results in a data frame
 #' fauxCell %>%
 #'    transmute (x = y, y = x) # => results in a data frame

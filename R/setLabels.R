@@ -7,6 +7,7 @@
 #'
 #' @importFrom hyperSpec chk.hy
 #' @importFrom hyperSpec labels labels<-
+#' @importFrom rlang enquos
 #' @importFrom rlang quo_name
 #' @importFrom rlang quo_get_expr
 #'
