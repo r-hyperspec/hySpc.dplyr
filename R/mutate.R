@@ -10,7 +10,6 @@
 #' @include unittest.R
 #' @include setLabels.R
 #' @importFrom hyperSpec chk.hy
-#' @importFrom hyperSpec fauxCell
 #' @importFrom hyperSpec labels labels<-
 #' @importFrom rlang enquos
 #' @importFrom rlang quo_name
@@ -20,20 +19,20 @@
 #'
 #' @examples
 #'
-#' fauxCell %>%
+#' chondro %>%
 #'   mutate (x, y)
 #'   head # => results in a hyperSpec object
-#' fauxCell %>%
+#' chondro %>%
 #'    mutate (x = y, y = x) # => results in a hyperSpec object
-#' fauxCell %>%
+#' chondro %>%
 #'    mutate (x2 = y, y2 = x) # => results in a hyperSpec object
-#' fauxCell %>%
+#' chondro %>%
 #'    mutate (y, x, spc2 = spc*2) # => results in a hyperSpec object
-#' fauxCell %>%
+#' chondro %>%
 #'    mutate (spc2 = spc*2) %>%
 #'    mutate (spc2) %>%
 #'    mutate (spc2*2) # => results in a hyperSpec object
-#' fauxCell %>%
+#' chondro %>%
 #'   mutate (y, x, spc) %>%
 #'   head # => results in a hyperSpec object
 #'
@@ -62,24 +61,24 @@ mutate.hyperSpec <- function(.data, ...) {
 
   # UT2
   test_that("arguments are correctly passed onto mutate/transmute", {
-    df <- fauxCell
+    df <- chondro
     df <- dplyr::mutate(df@data, x, x = 0, x = 1)
-    expect_identical(mutate.hyperSpec(fauxCell, x, x = 0, x = 1)@data, df)
+    expect_identical(mutate.hyperSpec(chondro, x, x = 0, x = 1)@data, df)
   })
 
   # UT3
   test_that("$spc cannot be mutated", {
-    expect_error(mutate.hyperSpec(fauxCell, x, spc*2))
-    expect_error(mutate.hyperSpec(fauxCell, x, spc = c))
-    expect_error(mutate.hyperSpec(fauxCell, x, spc = spc))
-    expect_error(mutate.hyperSpec(fauxCell, x, spc = spc*2))
+    expect_error(mutate.hyperSpec(chondro, x, spc*2))
+    expect_error(mutate.hyperSpec(chondro, x, spc = c))
+    expect_error(mutate.hyperSpec(chondro, x, spc = spc))
+    expect_error(mutate.hyperSpec(chondro, x, spc = spc*2))
   })
 
   # UT4
   test_that("$spc can be used for mutation", {
-    hy_tmp <- fauxCell
+    hy_tmp <- chondro
     hy_tmp@data$spc2 <- hy_tmp@data$spc*2
-    expect_equivalent(mutate.hyperSpec(fauxCell, spc2 = spc*2), hy_tmp)
+    expect_equivalent(mutate.hyperSpec(chondro, spc2 = spc*2), hy_tmp)
   })
 }
 
@@ -91,20 +90,20 @@ mutate.hyperSpec <- function(.data, ...) {
 #'
 #' @examples
 #'
-#' fauxCell %>%
+#' chondro %>%
 #'   transmute (x, y) %>%
 #'   head # => results in a data frame
-#' fauxCell %>%
+#' chondro %>%
 #'    transmute (x = y, y = x) # => results in a data frame
-#' fauxCell %>%
+#' chondro %>%
 #'    transmute (x2 = y, y2 = x) # => results in a data frame
-#' fauxCell %>%
+#' chondro %>%
 #'    transmute (y, x, spc2 = spc*2) # => results in a hyperSpec object
-#' fauxCell %>%
+#' chondro %>%
 #'    transmute (spc2 = spc*2) %>%
 #'    transmute (spc2) %>%
 #'    transmute (spc2*2) # => results in a hyperSpec object
-#' fauxCell %>%
+#' chondro %>%
 #'   transmute (x, y, spc) %>%
 #'   head # => results in a hyperSpec object
 #' @export
@@ -134,25 +133,25 @@ transmute.hyperSpec <- function(.data, ...) {
 
   # UT2
   test_that("arguments are correctly passed onto transmute", {
-    df <- fauxCell
+    df <- chondro
     df <- dplyr::transmute(df@data, x, x = 0, x = 1)
-    fauxdf <- transmute.hyperSpec(fauxCell, x, x = 0, x = 1)
+    fauxdf <- transmute.hyperSpec(chondro, x, x = 0, x = 1)
     expect_equivalent(fauxdf, df)
   })
 
   # UT3
   test_that("$spc cannot be mutated", {
-    expect_error(mutate.hyperSpec(fauxCell, x, spc*2))
-    expect_error(transmute.hyperSpec(fauxCell, x, spc = c))
-    expect_error(transmute.hyperSpec(fauxCell, x, spc = spc))
-    expect_error(transmute.hyperSpec(fauxCell, x, spc = spc*2))
+    expect_error(mutate.hyperSpec(chondro, x, spc*2))
+    expect_error(transmute.hyperSpec(chondro, x, spc = c))
+    expect_error(transmute.hyperSpec(chondro, x, spc = spc))
+    expect_error(transmute.hyperSpec(chondro, x, spc = spc*2))
   })
 
   # UT4
   test_that("$spc can be used for mutation", {
-    hy_tmp <- fauxCell
+    hy_tmp <- chondro
     hy_tmp@data$spc2 <- hy_tmp@data$spc*2
-    expect_equivalent(mutate.hyperSpec(fauxCell, spc2 = spc*2), hy_tmp)
+    expect_equivalent(mutate.hyperSpec(chondro, spc2 = spc*2), hy_tmp)
   })
 }
 
