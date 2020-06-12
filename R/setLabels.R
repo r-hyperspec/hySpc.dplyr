@@ -1,5 +1,7 @@
 #' Ensure that hyperSpec and non hyperSpec objects have the correct labels
-#'
+
+#' @param .data hyperSpec object
+#' @param ... resulting data frame
 #' @return Object with the correct labels
 #' @md
 #'
@@ -14,6 +16,7 @@
 #'
 #' @export
 setLabels <- function(.data, ...) {
+
     # Check if user passed in a hyperSpec object
     chk.hy(.data)
     args <- enquos(...)
@@ -32,16 +35,26 @@ setLabels <- function(.data, ...) {
     .data
 }
 
+#' @rdname setLabels
+#' @aliases setLabels
+#' @param .data hyperSpec object
+#' @param ... list of columns to update on
 #' @export
 setLabels.transmute <- function(.data, ...) {
     setLabels(.data, ...)
 }
 
+#' @rdname setLabels
+#' @aliases setLabels
+#' @param .data hyperSpec object
+#' @param res resulting data frame
 #' @export
 setLabels.select <- function(.data, res) {
+
   # Update labels
   labels <- labels(.data)[c(".wavelength", colnames(res))]
   if (is.null(res$spc)) {
+
     # use attribute to have correct labels when piping into `as.hyperSpec`
     attr(res, "labels") <- labels
     res
@@ -52,12 +65,18 @@ setLabels.select <- function(.data, res) {
   }
 }
 
+#' @rdname setLabels
+#' @aliases setLabels
+#' @param .data hyperSpec object
+#' @param res resulting data frame
 #' @export
 setLabels.rename <- function(.data, res) {
     labels.to.update <- setdiff(colnames(res), colnames(.data))
     labels.to.remove <- setdiff(colnames(.data), colnames(res))
+
     # Update the data slot with newly renamed data frame
     .data@data <- res
+
     # Update labels of hyperSpec object
     new.labels <- lapply(labels(.data, labels.to.update), as.expression)
     labels(.data)[c(labels.to.remove)] <- NULL
