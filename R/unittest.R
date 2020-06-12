@@ -28,7 +28,7 @@ hyperSpec.dplyr.unittest <- function() {
     attachNamespace("testthat")
   }
 
-  tests <- eapply(env = getNamespace("hyperSpec.tidyverse"), FUN = get.test, all.names = TRUE)
+  tests <- eapply(env = getNamespace("hySpc.dplyr"), FUN = get.test, all.names = TRUE)
   tests <- tests [!sapply(tests, is.null)]
 
   reporter <- SummaryReporter$new()
@@ -58,4 +58,12 @@ hyperSpec.dplyr.unittest <- function() {
 ##' @noRd
 get.test <- function(object) {
   attr(object, "test")
+}
+
+# internal test data set
+{
+  .testdata <- flu[, , min ~ 410]
+  .testdata[[6, ]] <- NA
+  .testdata[[3:4,, 406~407]] <- NA
+  .testdata$region <- factor (c("a", "a", "b", "b", "a", "a"))
 }

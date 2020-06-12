@@ -1,12 +1,12 @@
 ---
-title: "hyperSpec.dplyr"
+title: "hySpc.dplyr"
 author: "Claudia Beleites"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     fig_caption: yes
 vignette: >
-  %\VignetteIndexEntry{hyperSpec.dplyr}
+  %\VignetteIndexEntry{hySpc.dplyr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
   %\VignetteDepends{hyperSpec,magrittr}

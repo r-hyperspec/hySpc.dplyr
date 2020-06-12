@@ -1,10 +1,13 @@
 Package: hySpc.dplyr
 Type: Package
-Title: fortify hyperSpec for use with tidyverse
+Title: Fortify hyperSpec for Use with dplyr
 Version: 0.2.0
 Maintainer: Claudia Beleites <Claudia.Beleites@chemometrix.gmbh>
 Authors@R: c(
-    person("Claudia",   "Beleites",  role = c("aut","cre"), email = "Claudia.Beleites@chemometrix.gmbh")
+    person("Claudia", "Beleites", role = c("aut","cre"), email = "Claudia.Beleites@chemometrix.gmbh"),
+    person("Erick", "Oduniyi", role = "aut"),
+    person("Vilmantas", "Gegzna", role = "aut"),
+    person("Bryan", "Hanson", role = "aut")
     )
 Description:
     dplyr functions like select, filter etc. are provided for hyperSpec objects.
@@ -23,7 +26,8 @@ Imports:
     rlang
 Suggests:
     knitr,
-    dtplyr
+    dtplyr,
+    rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
