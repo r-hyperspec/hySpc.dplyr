@@ -17,9 +17,9 @@
 ##' @export
 ##' @examples
 ##'
-##' hyperSpec.dplyr.unittest ()
+##' hySpc.dplyr.unittest ()
 ##'
-hyperSpec.dplyr.unittest <- function() {
+hySpc.dplyr.unittest <- function() {
   if (!requireNamespace("testthat", quietly = TRUE)) {
     warning("Package testthat required to run the unit tests.")
     return(NA)
