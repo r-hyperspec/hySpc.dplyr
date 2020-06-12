@@ -1,7 +1,7 @@
 Package: hySpc.dplyr
 Type: Package
 Title: Fortify hyperSpec for Use with dplyr
-Version: 0.2.0
+Version: 0.3.0
 Maintainer: Claudia Beleites <Claudia.Beleites@chemometrix.gmbh>
 Authors@R: c(
     person("Claudia", "Beleites", role = c("aut","cre"), email = "Claudia.Beleites@chemometrix.gmbh"),
@@ -18,7 +18,7 @@ LazyLoad: yes
 LazyData: yes
 Depends:
     hyperSpec (>= 0.99-20191213),
-    dplyr,
+    dplyr >= 1.0.0,
     magrittr
 Imports:
     testthat,
