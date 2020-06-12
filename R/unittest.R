@@ -59,3 +59,11 @@ hyperSpec.dplyr.unittest <- function() {
 get.test <- function(object) {
   attr(object, "test")
 }
+
+# internal test data set
+{
+  .testdata <- flu[, , min ~ 410]
+  .testdata[[6, ]] <- NA
+  .testdata[[3:4,, 406~407]] <- NA
+  .testdata$region <- factor (c("a", "a", "b", "b", "a", "a"))
+}

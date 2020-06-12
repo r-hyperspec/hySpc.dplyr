@@ -5,3 +5,4 @@
 man/*.Rd
 vignettes/*.R
 vignettes/*.html
+inst/doc
