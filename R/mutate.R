@@ -10,6 +10,7 @@
 #' @include unittest.R
 #' @include setLabels.R
 #' @importFrom hyperSpec chk.hy
+#' @importFrom hyperSpec fauxCell
 #' @importFrom hyperSpec labels labels<-
 #' @importFrom rlang enquos
 #' @importFrom rlang quo_name
