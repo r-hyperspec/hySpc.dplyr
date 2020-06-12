@@ -13,7 +13,6 @@
 #' @seealso [dplyr::select()]
 #' @return hyperSpec object or data.frame with the selected columns. If the `$spc` is not included in the selection, the result will be a data.frame.
 #' @include unittest.R
-#' @include hy_update_labels.R
 #' @importFrom dplyr select
 #' @importFrom hyperSpec labels labels<-
 #' @export
