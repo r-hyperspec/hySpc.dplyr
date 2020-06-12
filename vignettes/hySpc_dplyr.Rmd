@@ -135,28 +135,43 @@ chondro %>%
   rename(region = clusters)
 ```
 
-## Transmute hyperSpec data columns
+## Mutate and transmutate hyperSpec data columns
 `transmute()` mutates the data columns of `hyperspec` objects. Unlike `mutate()` `transmute()`adds new variables but drops existing ones.
 
-```{r transmute}
-chondro %>%
-  transmute (y, x, filename, spc) %>%
-  head 
+```{r, results='show'}
+fauxCell %>%
+ mutate (x, y)
+ head # => results in a hyperSpec object
+ 
+fauxCell %>%
+  mutate (x = y, y = x) # => results in a hyperSpec object
 
-chondro %>%
-  transmute (y, x)
+fauxCell %>%
+  mutate (x2 = y, y2 = x) # => results in a hyperSpec object
 
-chondro %>%
-  transmute (y, x, filename, spc = spc*2)
+fauxCell %>%
+  mutate (y, x, spc2 = spc*2) # => results in a hyperSpec object
 
-flu %>%
-  transmute (spc, filename, c)
+fauxCell %>%
+  mutate (spc2 = spc*2) %>%
+  mutate (spc2) %>%
+  mutate (spc2*2) # => results in a hyperSpec object
 
-flu %>%
-  transmute (filename, c)
+fauxCell %>%
+ mutate (y, x, spc) %>%
+ head # => results in a hyperSpec object
 
-flu %>%
-  transmute (c=c*2, c=c*0)
+fauxCell %>%
+ transmute (x, y) %>%
+ head # => results in a data frame
+   
+fauxCell %>%
+  transmute (x = y, y = x) %>% 
+  head # => results in a data frame
+
+fauxCell %>%
+  transmute (x, y, spc) %>%
+  head # => results in a hyperSpec object
 ```
 
 ## Selecting wavelength ranges
