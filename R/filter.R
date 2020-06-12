@@ -35,6 +35,7 @@
 #' # remove spectra that contain /only/ NAs:
 #' tmp %>% filter(!all_wl(is.na(spc)))
 #' tmp %>% filter(any_wl(!is.na(spc))) # the same
+#' tmp %>% filter(spc == spc) # the same(!) due to dplyr's handling of NAs
 #'
 #' # keep only spectra with minimum average intensity
 #' laser %T>%
@@ -77,7 +78,10 @@ filter.hyperSpec <- function(.data, ..., .preserve = FALSE) {
   test_that("filtering the spectra matrix", {
     ## comparison on spectra matrix yields nrow * nwl results, but filter needs
     ## nrow results
-    expect_error(filter(.testdata, spc > 250))
+    expect_equivalent(
+      filter(.testdata, spc > 100),
+      .testdata[all_wl(.testdata > 100, na.rm = TRUE) & !all_wl(is.na(.testdata))]
+    )
 
     expect_equivalent(
       filter(.testdata, all_wl(spc > 100)),
