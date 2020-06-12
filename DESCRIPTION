@@ -6,8 +6,8 @@ Maintainer: Claudia Beleites <Claudia.Beleites@chemometrix.gmbh>
 Authors@R: c(
     person("Claudia",   "Beleites",  role = c("aut","cre"), email = "Claudia.Beleites@chemometrix.gmbh")
     )
-Description: 
-    dplyr functions like select, filter etc. are provided for hyperSpec objects. 
+Description:
+    dplyr functions like select, filter etc. are provided for hyperSpec objects.
     This allows smoother integration of hyperSpec into the tidyverse and also smoother working with pipes (magrittr).
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -17,7 +17,7 @@ Depends:
     hyperSpec (>= 0.99-20191213),
     dplyr,
     magrittr
-Imports: 
+Imports:
     testthat,
     methods,
     rlang
@@ -27,7 +27,7 @@ Suggests:
 VignetteBuilder: knitr
 RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
-Collate: 
+Collate:
     'unittest.R'
     'between.R'
     'filter.R'
