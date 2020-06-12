@@ -139,37 +139,37 @@ chondro %>%
 `transmute()` mutates the data columns of `hyperspec` objects. Unlike `mutate()` `transmute()`adds new variables but drops existing ones.
 
 ```{r, results='show'}
-fauxCell %>%
+chondro %>%
  mutate (x, y)
  head # => results in a hyperSpec object
  
-fauxCell %>%
+chondro %>%
   mutate (x = y, y = x) # => results in a hyperSpec object
 
-fauxCell %>%
+chondro %>%
   mutate (x2 = y, y2 = x) # => results in a hyperSpec object
 
-fauxCell %>%
+chondro %>%
   mutate (y, x, spc2 = spc*2) # => results in a hyperSpec object
 
-fauxCell %>%
+chondro %>%
   mutate (spc2 = spc*2) %>%
   mutate (spc2) %>%
   mutate (spc2*2) # => results in a hyperSpec object
 
-fauxCell %>%
+chondro %>%
  mutate (y, x, spc) %>%
  head # => results in a hyperSpec object
 
-fauxCell %>%
+chondro %>%
  transmute (x, y) %>%
  head # => results in a data frame
    
-fauxCell %>%
+chondro %>%
   transmute (x = y, y = x) %>% 
   head # => results in a data frame
 
-fauxCell %>%
+chondro %>%
   transmute (x, y, spc) %>%
   head # => results in a hyperSpec object
 ```
