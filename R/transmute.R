@@ -1,96 +1,44 @@
-
-#' transmute for hyperSpec objects
-#'
-#' adds new variables and drops existing ones.
+#' @description dplyr::transmute() adds and only keeps new variables.
+#' @rdname mutate.hyperSpec
+#' @aliases mutate.hyperSpec
 #' Special column `$spc` contains the spectra matrix.
-#' Unlike dplyr::transmute() dplyr::mutate() preserves all the existing variables.
 #' If `$spc` is not being transmuted, the result is a data.frame instead of a hyperSpec object.
-#'
-#'
-#'
-#'
-#'
-#' @inheritParams dplyr::transmute
-#' @seealso [dplyr::transmute()]
-#' @return hyperSpec object. If `$spc` is renamed, the result is an error.
-#' @include unittest.R
-#' @include hy_update_labels.R
-#' @importFrom rlang quo_name
-#' @importFrom rlang quo_get_expr
-#' @importFrom dplyr transmute
-#' @importFrom hyperSpec chk.hy
-#' @importFrom hyperSpec labels labels<-
-#' @export
 #'
 #' @examples
 #'
 #' chondro %>%
-#'   transmute (y, x, filename, spc) %>%
-#'   head # => results in a hyperSpec object
-#' chondro %>%
-#'   transmute (y, x)
+#'   transmute (x, y) %>%
 #'   head # => results in a data frame
 #' chondro %>%
-#'   transmute (y, x, filename, spc = spc*2)
+#'    transmute (x = y, y = x) # => results in a data frame
+#' chondro %>%
+#'    transmute (x2 = y, y2 = x) # => results in a data frame
+#' chondro %>%
+#'    transmute (y, x, spc2 = spc*2) # => results in a hyperSpec object
+#' chondro %>%
+#'    transmute (spc2 = spc*2) %>%
+#'    transmute (spc2) %>%
+#'    transmute (spc2*2) # => results in a hyperSpec object
+#' chondro %>%
+#'   transmute (x, y, spc) %>%
 #'   head # => results in a hyperSpec object
-#' flu %>%
-#'   transmute (spc, filename, c)
-#'   head # => results in a hyperSpec object
-#' flu %>%
-#'   transmute (filename, c)
-#'   head # => results in a data frame
-#' flu %>%
-#'   transmute (c=c*2, c=c*0)
-#'   # => results in a data frame
-transmute.hyperSpec <- function(.data, ...){
+#' @export
+transmute.hyperSpec <- function(.data, ...) {
+
   # Check if user passed in a hyperSpec object
   chk.hy(.data)
-  # Collect function arguments
-  args <- rlang::enquos(...)
-  args_names <- names(args)
-  if(length(args) == 0L){
-    return(NULL)
-  }
-  # Prepare a copy of the original hyperSpec object
-  tmp_hy <- .data
-  cols2get <- vector() # create a list to save the column names to
-  tmp_spc <- tmp_hy@data[c('spc')] # store original $spc column
-  # Prepare function arguments for transmute()
-  # assumption: the variable name and expr
-  # share the same index (i.e., args[i] is the expr for the variable names(args[i]))
-  for(i in seq_along(args)){
-    expr <- quo_name(quo_get_expr(args[[i]]))
-    # Process arguments with no names (assignments)
-    if('' %in% args_names[i]){
-      cols2get <- c(cols2get, expr)
-    # Process `spc` argument assignments
-    # Manipulate `spc` column before passing it on to transmute()
-    }else if('spc' %in% args_names[i]){
-      if(grepl('spc', expr)){
-        tmp_hy@data[c('spc')] <- tmp_spc
-        eval(parse(text = paste("tmp_hy@data[c('spc')]<-", "tmp_hy@data$", expr)))
-        if(!'spc' %in% cols2get){
-          cols2get <- c(cols2get, 'spc') # ensures there is, and only one `spc` column
-        }
-      }else{
-        # Throw an error
-        stop("$spc must be mutated from a $spc column")
-      }
-    # Process non `spc` argument assignments
-    }else{
-      assign <- paste(args_names[i],'=', expr, sep='')
-      cols2get <- c(cols2get, assign)
-    }
-  }
-  # Hand off columns (i.e., prepared arguments) to transmute()
-  transmute_args <- paste(cols2get, collapse=", ")
-  res <- eval(parse(text = paste("transmute(tmp_hy@data,", transmute_args, ")")))
+
+  # Collect transmute arguments
+  transmute_args <- pre_mutation(.data, ...)
+
+  # Pass transmute arguments to dplyr::transmute
+  res <- eval(parse(text = paste("transmute(transmute_args$tmp_data,", transmute_args$args, ")")))
+
   # Update labels
-  hy_update_labels(.data, res)
+  setLabels.select(.data, res)
 }
 
-# Begin unit testing (UT)
-.test(transmute.hyperSpec) <- function(){
+.test(transmute.hyperSpec) <- function() {
   context("transmute.hyperSpec")
 
   # UT1
@@ -107,32 +55,17 @@ transmute.hyperSpec <- function(.data, ...){
   })
 
   # UT3
-  test_that("$spc can only be mutated from a $spc column", {
-    expect_error(transmute.hyperSpec(flu, c, spc = c))
-    expect_error(transmute.hyperSpec(flu, c, spc = filename*0, spc = spc))
-    df <- flu
-    df@data$spc <- df@data$spc*2
-    expect_identical(transmute.hyperSpec(flu, spc = spc*2), select(df, spc))
+  test_that("$spc cannot be mutated", {
+    expect_error(mutate.hyperSpec(chondro, x, spc*2))
+    expect_error(transmute.hyperSpec(chondro, x, spc = c))
+    expect_error(transmute.hyperSpec(chondro, x, spc = spc))
+    expect_error(transmute.hyperSpec(chondro, x, spc = spc*2))
   })
 
   # UT4
-  test_that("labels attribute when returning data.frame", {
-    ref_labels <- labels(chondro [, c("x", "y")])
-
-    # label $spc is added automatically by initialize -
-    # it is not supposed to be returned by transmute.hyperSpec???
-    ref_labels <- ref_labels [!grepl("spc", ref_labels)]
-    ref_labels <- ref_labels [order(names(ref_labels))]
-
-    test_labels <- attr(transmute.hyperSpec(chondro, x, y), "labels")
-    test_labels <- test_labels [order(names(test_labels))]
-
-    expect_equal(test_labels, ref_labels)
-  })
-  test_that("labels attribute when returning data.frame", {
-    expect_equal(
-      labels(as.hyperSpec(transmute.hyperSpec(chondro, x, y))),
-      labels(chondro [, c("x", "y")])
-    )
+  test_that("$spc can be used for mutation", {
+    hy_tmp <- chondro
+    hy_tmp@data$spc2 <- hy_tmp@data$spc*2
+    expect_equivalent(mutate.hyperSpec(chondro, spc2 = spc*2), hy_tmp)
   })
 }
