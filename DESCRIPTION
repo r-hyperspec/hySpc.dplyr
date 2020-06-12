@@ -18,7 +18,7 @@ LazyLoad: yes
 LazyData: yes
 Depends:
     hyperSpec (>= 0.99-20191213),
-    dplyr >= 1.0.0,
+    dplyr (>= 1.0.0),
     magrittr
 Imports:
     testthat,
