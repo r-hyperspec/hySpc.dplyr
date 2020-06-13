@@ -12,6 +12,7 @@
 #' @seealso [dplyr::filter()]
 #' @importFrom dplyr filter
 #' @importFrom hyperSpec chk.hy
+#' @importFrom hyperSpec .fix_spc_colnames
 #' @importFrom testthat expect_equal
 #' @importFrom testthat expect_equivalent
 #' @importFrom testthat expect_error
