@@ -2,7 +2,8 @@ on:
   push:
     branches:
       - master
-      - feature/build_pkgdown
+      - develop
+      - github_actions_setup_for_ci_pkgdown
 
 name: Build pkgdown website
 
@@ -35,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages("remotes")
-		  install.packages("devtools")
+          install.packages("devtools")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_dev("pkgdown")
         shell: Rscript {0}
