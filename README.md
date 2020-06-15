@@ -1,5 +1,5 @@
 # hySpc.dplyr
-make hyperSpec work smoothly with tidyverse (fortification)
+make hyperSpec work smoothly with dplyr (fortification)
 
 <!-- badges: start -->
 <!--
