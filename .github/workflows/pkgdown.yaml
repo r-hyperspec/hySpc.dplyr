@@ -1,9 +1,9 @@
 on:
   push:
     branches:
+      - release
       - master
       - develop
-      - github_actions_setup_for_ci_pkgdown
 
 name: Update pkgdown website
 
