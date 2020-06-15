@@ -5,7 +5,7 @@ on:
       - develop
       - github_actions_setup_for_ci_pkgdown
 
-name: Build pkgdown website
+name: Update pkgdown website
 
 jobs:
   pkgdown:
