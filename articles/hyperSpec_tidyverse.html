@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hySpc.dplyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -75,7 +75,7 @@
       <h1 data-toc-skip>hySpc.dplyr</h1>
                         <h4 class="author">Claudia Beleites</h4>
             
-            <h4 class="date">2020-06-09</h4>
+            <h4 class="date">2020-06-15</h4>
       
       
       <div class="hidden name"><code>hyperSpec_tidyverse.Rmd</code></div>
@@ -99,7 +99,7 @@
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="no">c</span> <span class="kw">&gt;</span> <span class="fl">0.2</span>)
 
 <span class="no">flu</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="no">c</span> <span class="kw">%&gt;%</span> <span class="fu">between</span> (<span class="fl">0.15</span>, <span class="fl">0.25</span>))</pre></body></html></div>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="no">c</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/between.html">between</a></span> (<span class="fl">0.15</span>, <span class="fl">0.25</span>))</pre></body></html></div>
 <p>The filter conditions (logical predicates) must yield one logical value per row. Logical expressions on the spectra matrix such as <code>spc &gt; 100</code> yield a logical <em>matrix</em>. This matrix indicates which <em>elements</em> of the spectra matrix match the condition.</p>
 <p>To obtain the logical vector that indicates which <em>spectra</em> (rows) should be kept, further information is needed: should a spectrum be kept if <em>any</em> of its intensity values (spectra matrix elements) fulfills the condition, or only if <em>all</em> of them do? <code>hyperSpec</code> functions <code>any_wl()</code> and <code>all_wl()</code> summarize the logical matrix in this way.</p>
 <p>Typical filtering tasks based on the spectra matrix are:</p>
@@ -117,12 +117,12 @@
 <li>
 <p>keep only spectra with all intensities inside a specified range (e.g. non-negative and below a saturation threshold):</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">flu</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="fu">all_wl</span> (<span class="fu">between</span> (<span class="no">spc</span>, <span class="fl">0</span>, <span class="fl">500</span>)))</pre></body></html></div>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="fu">all_wl</span> (<span class="fu"><a href="../reference/between.html">between</a></span> (<span class="no">spc</span>, <span class="fl">0</span>, <span class="fl">500</span>)))</pre></body></html></div>
 </li>
 <li>
 <p>keep only spectra with <em>average</em> intensity inside a specified range (e.g. non-negative and below a saturation threshold):</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">flu</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span> (<span class="no">spc</span>) <span class="kw">%&gt;%</span> <span class="fu">between</span> (<span class="fl">0</span>, <span class="fl">500</span>))</pre></body></html></div>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span> (<span class="no">spc</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/between.html">between</a></span> (<span class="fl">0</span>, <span class="fl">500</span>))</pre></body></html></div>
 <p>Here, <code>any_wl()</code> or <code>all_wl()</code> are not needed: the spectra are already summarized into a single intensity value by <code><a href="https://rdrr.io/r/base/colSums.html">rowMeans()</a></code>. The condition therefore evaluates to a one logical value per spectrum already - which is what is needed.</p>
 </li>
 </ul>
@@ -244,7 +244,7 @@
 <span class="co">#&gt; [8] base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] hySpc.dplyr_0.2.0       magrittr_1.5            dplyr_1.0.0            </span>
+<span class="co">#&gt; [1] hySpc.dplyr_0.3.0       magrittr_1.5            dplyr_1.0.0            </span>
 <span class="co">#&gt; [4] hyperSpec_0.99-20200527 xml2_1.3.2              ggplot2_3.3.1          </span>
 <span class="co">#&gt; [7] lattice_0.20-41        </span>
 <span class="co">#&gt; </span>
@@ -278,7 +278,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Claudia Beleites.</p>
+  <p>Developed by Claudia Beleites, Erick Oduniyi, Vilmantas Gegzna, Bryan Hanson.</p>
 </div>
 
 <div class="pkgdown">
