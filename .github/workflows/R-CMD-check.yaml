@@ -4,11 +4,12 @@ on:
       - release
       - master
       - develop
+      - github_actions_setup_for_ci_pkgdown
   pull_request:
     branches:
       - release
       - master
-	  - develop
+      - develop
 
 name: R-CMD-check
 
