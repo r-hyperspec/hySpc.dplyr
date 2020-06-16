@@ -35,7 +35,6 @@ Collate:
     'unittest.R'
     'between.R'
     'filter.R'
-    'fix_spc_colnames.R'
     'setLabels.R'
     'mutate.R'
     'rename.R'
