@@ -47,9 +47,9 @@ mutate.hyperSpec <- function(.data, ...) {
   })
 
   test_that("arguments are correctly passed onto mutate/transmute", {
-    df <- flu
-    df <- dplyr::transmute(df@data, c, c = 0, c = 1)
-    expect_equivalent(transmute.hyperSpec(flu, c, c = 0, c = 1), df)
+    hy_tmp <- .testdata
+    hy_tmp@data <- dplyr::mutate(hy_tmp@data, spc*2, spc*3, spc*0)
+    expect_equivalent(mutate.hyperSpec(.testdata, spc*2, spc*3, spc*0), hy_tmp)
   })
 
   test_that("$spc can be used for mutation", {
