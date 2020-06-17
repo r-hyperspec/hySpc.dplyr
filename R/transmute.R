@@ -37,7 +37,7 @@ transmute.hyperSpec <- function(.data, ...) {
   res <- transmute(.data@data, ...)
 
   # Update labels
-  setLabels.select(.data, res)
+  setLabels_select(.data, res)
 }
 
 .test(transmute.hyperSpec) <- function() {
