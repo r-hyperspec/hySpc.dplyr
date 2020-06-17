@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>rename for hyperSpec objects — rename.hyperSpec • hySpc.dplyr</title>
+<title>Ensure that hyperSpec and non hyperSpec objects have the correct labels — setLabels • hySpc.dplyr</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,8 @@
 
 
 
-<meta property="og:title" content="rename for hyperSpec objects — rename.hyperSpec" />
-<meta property="og:description" content="rename extra data columns of hyperSpec objects.
-Special column $spc contains the spectra matrix.
-Unlike dplyr::select() dplyr::rename() keeps all the variables of the data frame intact.
-However, if $spc is renamed, the result is an error instead of a hyperSpec object." />
+<meta property="og:title" content="Ensure that hyperSpec and non hyperSpec objects have the correct labels — setLabels" />
+<meta property="og:description" content="Ensure that hyperSpec and non hyperSpec objects have the correct labels" />
 
 
 
@@ -118,58 +115,55 @@ However, if $spc is renamed, the result is an error instead of a hyperSpec objec
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>rename for hyperSpec objects</h1>
+    <h1>Ensure that hyperSpec and non hyperSpec objects have the correct labels</h1>
     
-    <div class="hidden name"><code>rename.hyperSpec.Rd</code></div>
+    <div class="hidden name"><code>setLabels.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>rename extra data columns of hyperSpec objects.
-Special column <code>$spc</code> contains the spectra matrix.
-Unlike dplyr::select() dplyr::rename() keeps all the variables of the data frame intact.
-However, if <code>$spc</code> is renamed, the result is an error instead of a hyperSpec object.</p>
+    <p>Ensure that hyperSpec and non hyperSpec objects have the correct labels</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for hyperSpec</span>
-<span class='fu'>rename</span>(<span class='kw'>.data</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>setLabels</span>(<span class='kw'>.data</span>, <span class='kw'>...</span>)
+
+<span class='fu'>setLabels_transmute</span>(<span class='kw'>.data</span>, <span class='kw'>...</span>)
+
+<span class='fu'>setLabels_select</span>(<span class='kw'>.data</span>, <span class='kw'>res</span>)
+
+<span class='fu'>setLabels_rename</span>(<span class='kw'>.data</span>, <span class='kw'>res</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.data</th>
-      <td><p>A data frame, data frame extension (e.g. a tibble), or a
-lazy data frame (e.g. from dbplyr or dtplyr). See <em>Methods</em>, below, for
-more details.</p></td>
+      <td><p>hyperSpec object</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>For <code>rename()</code>: &lt;<code><a href='https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html'>tidy-select</a></code>&gt; Use
-<code>new_name = old_name</code> to rename selected variables.</p>
-<p>For <code>rename_with()</code>: additional arguments passed onto <code>.fn</code>.</p></td>
+      <td><p>list of columns to update on</p></td>
+    </tr>
+    <tr>
+      <th>res</th>
+      <td><p>resulting data frame</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>hyperSpec object. If <code>$spc</code> is renamed, the result is an error.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/rename.html'>dplyr::rename()</a></code></p></div>
+    <p>Object with the correct labels</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>laser</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>rename</span> (filename2 = <span class='kw'>filename</span>) <span class='op'>%&gt;%</span>
-  <span class='kw'>head</span> <span class='co'># results in a hyperSpec object</span></div><div class='output co'>#&gt; hyperSpec object
+    <pre class="examples"><div class='input'><span class='kw'>flu</span> <span class='op'>%&gt;%</span>
+ <span class='fu'>setLabels</span>(.wavelength = <span class='st'>"f / THz"</span>, c = <span class='st'>"c / ml"</span>)</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    6 spectra
 #&gt;    3 data columns
-#&gt;    36 data points / spectrum
-#&gt; wavelength: lambda/nm [numeric] 404.5828 404.6181 ... 405.8176 
+#&gt;    181 data points / spectrum
+#&gt; wavelength: f / THz [numeric] 405.0 405.5 ... 495 
 #&gt; data:  (6 rows x 3 columns)
-#&gt;    1. t: t / s [numeric] 0 2 ... 281 
-#&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 110.918 
-#&gt;    3. filename2: filename2 [character] rawdata/laser.txt.gz rawdata/laser.txt.gz ... rawdata/laser.txt.gz </div></pre>
+#&gt;    1. spc: I[fl]/"a.u." [matrix, array181] 27.15000 66.80133 ... 294.6495 
+#&gt;    2. filename: filename [character] rawdata/flu1.txt rawdata/flu2.txt ... rawdata/flu6.txt 
+#&gt;    3. c: c / ml [numeric] 0.05 0.10 ... 0.3 </div><div class='input'></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

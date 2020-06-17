@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>rename for hyperSpec objects — rename.hyperSpec • hySpc.dplyr</title>
+<title>mutate for hyperSpec object — mutate.hyperSpec • hySpc.dplyr</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,9 @@
 
 
 
-<meta property="og:title" content="rename for hyperSpec objects — rename.hyperSpec" />
-<meta property="og:description" content="rename extra data columns of hyperSpec objects.
-Special column $spc contains the spectra matrix.
-Unlike dplyr::select() dplyr::rename() keeps all the variables of the data frame intact.
-However, if $spc is renamed, the result is an error instead of a hyperSpec object." />
+<meta property="og:title" content="mutate for hyperSpec object — mutate.hyperSpec" />
+<meta property="og:description" content="mutate adds new variables and preserves all the existing variables.
+Special column $spc contains the spectra matrix." />
 
 
 
@@ -118,20 +116,18 @@ However, if $spc is renamed, the result is an error instead of a hyperSpec objec
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>rename for hyperSpec objects</h1>
+    <h1>mutate for hyperSpec object</h1>
     
-    <div class="hidden name"><code>rename.hyperSpec.Rd</code></div>
+    <div class="hidden name"><code>mutate.hyperSpec.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>rename extra data columns of hyperSpec objects.
-Special column <code>$spc</code> contains the spectra matrix.
-Unlike dplyr::select() dplyr::rename() keeps all the variables of the data frame intact.
-However, if <code>$spc</code> is renamed, the result is an error instead of a hyperSpec object.</p>
+    <p><code>mutate</code> adds new variables and preserves all the existing variables.
+Special column <code>$spc</code> contains the spectra matrix.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for hyperSpec</span>
-<span class='fu'>rename</span>(<span class='kw'>.data</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>mutate</span>(<span class='kw'>.data</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,32 +140,62 @@ more details.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>For <code>rename()</code>: &lt;<code><a href='https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html'>tidy-select</a></code>&gt; Use
-<code>new_name = old_name</code> to rename selected variables.</p>
-<p>For <code>rename_with()</code>: additional arguments passed onto <code>.fn</code>.</p></td>
+      <td><p>&lt;<code><a href='https://dplyr.tidyverse.org/reference/dplyr_data_masking.html'>data-masking</a></code>&gt; Name-value pairs.
+The name gives the name of the column in the output.</p>
+<p>The value can be:</p><ul>
+<li><p>A vector of length 1, which will be recycled to the correct length.</p></li>
+<li><p>A vector the same length as the current group (or the whole data frame
+if ungrouped).</p></li>
+<li><p><code>NULL</code>, to remove the column.</p></li>
+<li><p>A data frame or tibble, to create multiple columns in the output.</p></li>
+</ul></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>hyperSpec object. If <code>$spc</code> is renamed, the result is an error.</p>
+    <p>hyperSpec object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/rename.html'>dplyr::rename()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>laser</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>rename</span> (filename2 = <span class='kw'>filename</span>) <span class='op'>%&gt;%</span>
-  <span class='kw'>head</span> <span class='co'># results in a hyperSpec object</span></div><div class='output co'>#&gt; hyperSpec object
-#&gt;    6 spectra
+    <pre class="examples"><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span> (<span class='kw'>t</span>, <span class='kw'>filename</span>)</div><div class='output co'>#&gt; hyperSpec object
+#&gt;    84 spectra
 #&gt;    3 data columns
 #&gt;    36 data points / spectrum
 #&gt; wavelength: lambda/nm [numeric] 404.5828 404.6181 ... 405.8176 
-#&gt; data:  (6 rows x 3 columns)
-#&gt;    1. t: t / s [numeric] 0 2 ... 281 
-#&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 110.918 
-#&gt;    3. filename2: filename2 [character] rawdata/laser.txt.gz rawdata/laser.txt.gz ... rawdata/laser.txt.gz </div></pre>
+#&gt; data:  (84 rows x 3 columns)
+#&gt;    1. t: t / s [numeric] 0 2 ... 5722 
+#&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 112.086 
+#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz ... rawdata/laser.txt.gz </div><div class='input'>  <span class='kw'>head</span> <span class='co'># =&gt; results in a hyperSpec object</span></div><div class='output co'>#&gt; function (x, ...) 
+#&gt; UseMethod("head")
+#&gt; &lt;bytecode: 0x7fa1b47d9cf8&gt;
+#&gt; &lt;environment: namespace:utils&gt;</div><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>mutate</span> (<span class='op'>-</span><span class='kw'>spc</span>) <span class='co'># =&gt; results in a hyperSpec object</span></div><div class='output co'>#&gt; hyperSpec object
+#&gt;    84 spectra
+#&gt;    4 data columns
+#&gt;    36 data points / spectrum
+#&gt; wavelength: lambda/nm [numeric] 404.5828 404.6181 ... 405.8176 
+#&gt; data:  (84 rows x 4 columns)
+#&gt;    1. t: t / s [numeric] 0 2 ... 5722 
+#&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 112.086 
+#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz ... rawdata/laser.txt.gz 
+#&gt;    4. -spc:  [matrix, array36] -164.650 -179.724 ... -112.086 </div><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>mutate</span> (spc2 = <span class='kw'>spc</span><span class='op'>*</span><span class='fl'>2</span>) <span class='op'>%&gt;%</span>
+   <span class='fu'>mutate</span> (<span class='kw'>spc2</span>) <span class='op'>%&gt;%</span>
+   <span class='fu'>mutate</span> (<span class='kw'>spc2</span><span class='op'>*</span><span class='fl'>2</span>) <span class='co'># =&gt; results in a hyperSpec object</span></div><div class='output co'>#&gt; hyperSpec object
+#&gt;    84 spectra
+#&gt;    5 data columns
+#&gt;    36 data points / spectrum
+#&gt; wavelength: lambda/nm [numeric] 404.5828 404.6181 ... 405.8176 
+#&gt; data:  (84 rows x 5 columns)
+#&gt;    1. t: t / s [numeric] 0 2 ... 5722 
+#&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 112.086 
+#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz ... rawdata/laser.txt.gz 
+#&gt;    4. spc2:  [matrix, array36] 329.300 359.448 ... 224.172 
+#&gt;    5. spc2 * 2:  [matrix, array36] 658.600 718.896 ... 448.344 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
