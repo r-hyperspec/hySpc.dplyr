@@ -41,7 +41,7 @@ setLabels <- function(.data, ...) {
 #' @param .data hyperSpec object
 #' @param ... list of columns to update on
 #' @export
-setLabels.transmute <- function(.data, ...) {
+setLabels_transmute <- function(.data, ...) {
     setLabels(.data, ...)
 }
 
@@ -50,7 +50,7 @@ setLabels.transmute <- function(.data, ...) {
 #' @param .data hyperSpec object
 #' @param res resulting data frame
 #' @export
-setLabels.select <- function(.data, res) {
+setLabels_select <- function(.data, res) {
 
   # Update labels
   labels <- labels(.data)[c(".wavelength", colnames(res))]
@@ -71,7 +71,7 @@ setLabels.select <- function(.data, res) {
 #' @param .data hyperSpec object
 #' @param res resulting data frame
 #' @export
-setLabels.rename <- function(.data, res) {
+setLabels_rename <- function(.data, res) {
     labels.to.update <- setdiff(colnames(res), colnames(.data))
     labels.to.remove <- setdiff(colnames(.data), colnames(res))
 
@@ -88,13 +88,11 @@ setLabels.rename <- function(.data, res) {
 .test(setLabels) <- function() {
   context("setLabels")
 
-  # UT1
   test_that("non hyperSpec objects are rejected", {
     df <- data.frame(a = NA, b = NA)
     expect_error(setLabels(df))
   })
 
-  # UT2
   test_that("labels are correctly set" , {
       tmp <- laser
       labels(tmp, ".wavelength") <- "f / THz"
