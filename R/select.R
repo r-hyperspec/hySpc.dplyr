@@ -33,7 +33,7 @@
 select.hyperSpec <- function(.data, ...) {
   res <- select(.data@data, ...)
   # Update labels
-  setLabels.select(.data, res)
+  setLabels_select(.data, res)
 }
 
 .test(select.hyperSpec) <- function() {
