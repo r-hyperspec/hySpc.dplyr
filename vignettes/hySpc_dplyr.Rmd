@@ -135,43 +135,46 @@ chondro %>%
   rename(region = clusters)
 ```
 
-## Mutate and transmutate hyperSpec data columns
-`transmute()` mutates the data columns of `hyperspec` objects. Unlike `mutate()` `transmute()`adds new variables but drops existing ones.
+## Mutating data columns for hyperSpec object: `mutate()`
+`mutate()` adds new variables and preserves all the existing variables.
 
 ```{r, results='show'}
-chondro %>%
- mutate (x, y)
+laser %>%
+ mutate (t, filename)
  head # => results in a hyperSpec object
  
-chondro %>%
-  mutate (x = y, y = x) # => results in a hyperSpec object
+laser %>%
+  mutate (-spc) # => results in a hyperSpec object
 
-chondro %>%
-  mutate (x2 = y, y2 = x) # => results in a hyperSpec object
-
-chondro %>%
-  mutate (y, x, spc2 = spc*2) # => results in a hyperSpec object
-
-chondro %>%
+laser %>%
   mutate (spc2 = spc*2) %>%
   mutate (spc2) %>%
   mutate (spc2*2) # => results in a hyperSpec object
+```
 
-chondro %>%
- mutate (y, x, spc) %>%
- head # => results in a hyperSpec object
+## Transmuting data columns for hyperSpec object: `transmute()`
+`transmute()` mutates the data columns of `hyperspec` objects. Unlike `mutate()` `transmute()`adds new variables but drops existing ones.
 
-chondro %>%
- transmute (x, y) %>%
+```{r, results='show'}
+laser %>%
+ transmute (t, filename)
  head # => results in a data frame
-   
-chondro %>%
-  transmute (x = y, y = x) %>% 
-  head # => results in a data frame
+ 
+laser %>%
+  transmute (-spc) # => results in a hyperSpec object
 
-chondro %>%
-  transmute (x, y, spc) %>%
-  head # => results in a hyperSpec object
+laser %>%
+  transmute (spc2 = spc*2) %>%
+  transmute (spc2) %>%
+  transmute (spc2*2) # => results in a hyperSpec object
+```
+
+## Setting labels: `setLabels()`
+`setLabels()` Ensure that hyperSpec and non hyperSpec objects have the correct labels.
+
+```{r, results='show'}
+flu %>%
+  setLabels(.wavelength = "f / THz", c = "c / ml")
 ```
 
 ## Selecting wavelength ranges
