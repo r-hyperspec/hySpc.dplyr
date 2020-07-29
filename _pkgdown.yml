@@ -1,0 +1,77 @@
+
+# -------------------------------------------------------------------------
+
+template:
+  params:
+    bootswatch: cerulean
+
+# -------------------------------------------------------------------------
+# Automatically switches, which verion should be built:
+# released or in-development
+
+development:
+  mode: auto
+
+# -------------------------------------------------------------------------
+# # If you need custom navigation bar, modify this section:
+
+# navbar:
+#   structure:
+#     left:  [version, home, intro, articles, tutorials, reference, news]
+#     right: [github]
+#   components:
+#     version:
+#       icon: fa-book
+#       menu:
+#       - text: "Documentation for version of package:"
+#       - text: Released
+#         href: https://r-hyperspec.github.io/ [..pkg-name...] /
+#       - text: In-development
+#         href: https://r-hyperspec.github.io/ [...pkg-name...] /dev/
+
+# -------------------------------------------------------------------------
+# # If you need custom webpage for articles, modify this section:
+
+# articles:
+#   - title: "Principles"
+#     navbar: ~
+#     desc: >
+#       The main functionality of this package
+#     contents:
+#     - vignette-1
+#     - vignette-1
+#   - title: "Case studies"
+#     desc: >
+#       The example workflows.
+#     contents:
+#     - vignette-3
+#     - vignette-4
+
+# -------------------------------------------------------------------------
+# # If you need links for authors, modify this section:
+
+# authors:
+#   First-name Family-name:
+#     href: https://some.url
+
+# -------------------------------------------------------------------------
+# # If you need custom webpage for reference, modify this section:
+
+# reference:
+# - title: 'Package "..."'
+# - contents:
+#   - has_concept("package")
+
+# -------------------------------------------------------------------------
+
+figures:
+  dev: grDevices::png
+  dpi: 96
+  dev.args: []
+  fig.ext: png
+  fig.width: 4.854
+  fig.height: 3
+  fig.retina: 2
+  fig.asp: 1.618
+
+# -------------------------------------------------------------------------
