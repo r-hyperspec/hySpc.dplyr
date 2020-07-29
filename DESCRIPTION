@@ -22,6 +22,7 @@ Depends:
     magrittr
 Imports:
     testthat,
+    hySpc.testthat,
     methods,
     rlang
 Suggests:
