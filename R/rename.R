@@ -45,7 +45,7 @@ rename.hyperSpec <- function(.data, ...) {
 }
 
 # Begin unit testing (UT)
-.test(rename.hyperSpec) <- function(){
+test(rename.hyperSpec) <- function(){
   context("rename.hyperSpec")
 
   test_that("non hyperSpec objects are rejected", {

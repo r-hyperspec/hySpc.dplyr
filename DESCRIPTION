@@ -22,6 +22,7 @@ Depends:
     magrittr
 Imports:
     testthat,
+    hySpc.testthat,
     methods,
     rlang
 Suggests:
@@ -29,7 +30,7 @@ Suggests:
     dtplyr,
     rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Collate:
     'unittest.R'
