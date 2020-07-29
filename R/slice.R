@@ -16,7 +16,7 @@ slice.hyperSpec <- function(.data, ..., .preserve = FALSE) {
   .data
 }
 
-.test(slice.hyperSpec) <- function() {
+test(slice.hyperSpec) <- function() {
   context("slice")
 
   test_that("simple slicing", {
