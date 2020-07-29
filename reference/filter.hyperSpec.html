@@ -12,8 +12,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -38,6 +38,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 
 <meta property="og:title" content="filter or slice hyperSpec object — filter.hyperSpec" />
 <meta property="og:description" content="filtering based on extra data columns works smoothly,
@@ -238,7 +240,7 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 <span class='kw'>laser</span> <span class='op'>%T&gt;%</span>
      <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(spc.nmax = <span class='fl'>Inf</span>) <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowMeans</a></span>(<span class='kw'>spc</span>) <span class='op'>&gt;</span> <span class='fl'>9000</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(col = <span class='st'>"red"</span>, add = <span class='fl'>TRUE</span>)</div><div class='img'><img src='filter.hyperSpec-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='kw'>chondro</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>)</div><div class='output co'>#&gt; hyperSpec object
+  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(col = <span class='st'>"red"</span>, add = <span class='fl'>TRUE</span>)</div><div class='img'><img src='filter.hyperSpec-1.png' alt='' width='466' height='288' /></div><div class='input'><span class='kw'>chondro</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>)</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    3 spectra
 #&gt;    5 data columns
 #&gt;    300 data points / spectrum
