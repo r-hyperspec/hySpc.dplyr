@@ -15,19 +15,19 @@ development:
 # -------------------------------------------------------------------------
 # # If you need custom navigation bar, modify this section:
 
-# navbar:
-#   structure:
-#     left:  [version, home, intro, articles, tutorials, reference, news]
-#     right: [github]
-#   components:
-#     version:
-#       icon: fa-book
-#       menu:
-#       - text: "Documentation for version of package:"
-#       - text: Released
-#         href: https://r-hyperspec.github.io/ [..pkg-name...] /
-#       - text: In-development
-#         href: https://r-hyperspec.github.io/ [...pkg-name...] /dev/
+navbar:
+  structure:
+    left:  [version, home, intro, articles, tutorials, reference, news]
+    right: [github]
+  components:
+    version:
+      icon: fa-book
+      menu:
+      - text: "Documentation for version of package:"
+      - text: Released
+        href: https://r-hyperspec.github.io/hySpc.dplyr/
+      - text: In-development
+        href: https://r-hyperspec.github.io/hySpc.dplyr/dev/
 
 # -------------------------------------------------------------------------
 # # If you need custom webpage for articles, modify this section:
