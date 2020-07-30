@@ -79,14 +79,28 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-book"></span>
+     
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Documentation for version of package:</li>
+    <li>
+      <a href="https://r-hyperspec.github.io/hySpc.dplyr/">Released</a>
+    </li>
+    <li>
+      <a href="https://r-hyperspec.github.io/hySpc.dplyr/dev/">In-development</a>
+    </li>
+  </ul>
+</li>
+<li>
   <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -99,6 +113,9 @@
       <a href="../articles/hySpc_dplyr.html">hySpc.dplyr</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
