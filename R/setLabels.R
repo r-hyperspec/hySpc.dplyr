@@ -85,7 +85,7 @@ setLabels_rename <- function(.data, res) {
     .data
 }
 
-.test(setLabels) <- function() {
+test(setLabels) <- function() {
   context("setLabels")
 
   test_that("non hyperSpec objects are rejected", {

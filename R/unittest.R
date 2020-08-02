@@ -14,6 +14,7 @@
 ##' @importFrom  testthat MultiReporter
 ##' @importFrom  testthat with_reporter
 ##' @importFrom  testthat get_reporter
+##' @import hySpc.testthat
 ##' @export
 ##' @examples
 ##'
