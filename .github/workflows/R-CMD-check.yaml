@@ -24,6 +24,7 @@ jobs:
       matrix:
         config:
           - {os: windows-latest, r: 'devel'}
+          - {os: windows-latest, r: '3.6'}
           - {os: windows-latest, r: 'release'}
           - {os: macOS-latest,   r: 'release'}
           - {os: ubuntu-16.04,   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
@@ -88,25 +89,12 @@ jobs:
         shell: Rscript {0}
 
       - name: Check
-        if: matrix.config.r != 'devel'
         env:
           _R_CHECK_CRAN_INCOMING_: false
         run: |
           rcmdcheck::rcmdcheck(
             args = c("--no-manual", "--as-cran"),
             error_on = "warning",
-            check_dir = "check"
-          )
-        shell: Rscript {0}
-
-      - name: Check (R-devel)
-        if: matrix.config.r == 'devel'
-        env:
-          _R_CHECK_CRAN_INCOMING_: false
-        run: |
-          rcmdcheck::rcmdcheck(
-            args = c("--no-manual", "--as-cran"),
-            error_on = "error",
             check_dir = "check"
           )
         shell: Rscript {0}
@@ -122,7 +110,3 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-
-      - name: Test coverage & upload report to Codecov
-        run: covr::codecov()
-        shell: Rscript {0}

@@ -5,21 +5,24 @@ on:
       - master
       - develop
 
-name: Website (pkgdown)
+  pull_request:
+    branches:
+      - release
+      - master
+      - develop
+
+
+name: Test coverage
 
 jobs:
-  pkgdown:
+  test-coverage:
     runs-on: macOS-latest
-
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-
     steps:
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@master
-        with:
-          r-version: 'release'
 
       - uses: r-lib/actions/setup-pandoc@master
 
@@ -41,22 +44,15 @@ jobs:
         run: |
           install.packages(c("remotes", "devtools"))
           remotes::install_deps(dependencies = TRUE)
-          # remotes::install_dev("pkgdown")
-          remotes::install_github("forked-packages/pkgdown")
+          remotes::install_cran("covr")
         shell: Rscript {0}
 
       - name: Roxygenize
-        # The vignettes will be built in step "Deploy package"
         run: |
+          # Vignettes are not needed for coverage tests
           devtools::document(roclets = c('rd', 'collate', 'namespace'))
         shell: Rscript {0}
 
-      - name: Install package
-        run: R CMD INSTALL .
-
-      - name: Deploy package
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
-
+      - name: Test coverage
+        run: covr::codecov()
+        shell: Rscript {0}
