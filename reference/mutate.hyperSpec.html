@@ -171,7 +171,8 @@ if ungrouped).</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span> (<span class='kw'>t</span>, <span class='kw'>filename</span>)</div><div class='output co'>#&gt; hyperSpec object
+  <span class='fu'>mutate</span> (<span class='kw'>t</span>, <span class='kw'>filename</span>)
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    84 spectra
 #&gt;    3 data columns
 #&gt;    36 data points / spectrum
@@ -179,11 +180,13 @@ if ungrouped).</p></li>
 #&gt; data:  (84 rows x 3 columns)
 #&gt;    1. t: t / s [numeric] 0 2 ... 5722 
 #&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 112.086 
-#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz ... rawdata/laser.txt.gz </div><div class='input'>  <span class='kw'>head</span> <span class='co'># =&gt; results in a hyperSpec object</span></div><div class='output co'>#&gt; function (x, ...) 
+#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz ... rawdata/laser.txt.gz </div><div class='input'>  <span class='kw'>head</span> <span class='co'># =&gt; results in a hyperSpec object</span>
+</div><div class='output co'>#&gt; function (x, ...) 
 #&gt; UseMethod("head")
-#&gt; &lt;bytecode: 0x7f891a123808&gt;
+#&gt; &lt;bytecode: 0x7f8f79060208&gt;
 #&gt; &lt;environment: namespace:utils&gt;</div><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
-   <span class='fu'>mutate</span> (<span class='op'>-</span><span class='kw'>spc</span>) <span class='co'># =&gt; results in a hyperSpec object</span></div><div class='output co'>#&gt; hyperSpec object
+   <span class='fu'>mutate</span> (<span class='op'>-</span><span class='kw'>spc</span>) <span class='co'># =&gt; results in a hyperSpec object</span>
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    84 spectra
 #&gt;    4 data columns
 #&gt;    36 data points / spectrum
@@ -195,7 +198,8 @@ if ungrouped).</p></li>
 #&gt;    4. -spc:  [matrix, array36] -164.650 -179.724 ... -112.086 </div><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
    <span class='fu'>mutate</span> (spc2 = <span class='kw'>spc</span><span class='op'>*</span><span class='fl'>2</span>) <span class='op'>%&gt;%</span>
    <span class='fu'>mutate</span> (<span class='kw'>spc2</span>) <span class='op'>%&gt;%</span>
-   <span class='fu'>mutate</span> (<span class='kw'>spc2</span><span class='op'>*</span><span class='fl'>2</span>) <span class='co'># =&gt; results in a hyperSpec object</span></div><div class='output co'>#&gt; hyperSpec object
+   <span class='fu'>mutate</span> (<span class='kw'>spc2</span><span class='op'>*</span><span class='fl'>2</span>) <span class='co'># =&gt; results in a hyperSpec object</span>
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    84 spectra
 #&gt;    5 data columns
 #&gt;    36 data points / spectrum

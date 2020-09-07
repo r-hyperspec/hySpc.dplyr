@@ -84,7 +84,7 @@
       <h1 data-toc-skip>hySpc.dplyr</h1>
                         <h4 class="author">Claudia Beleites</h4>
             
-            <h4 class="date">2020-08-24</h4>
+            <h4 class="date">2020-09-07</h4>
       
       
       <div class="hidden name"><code>hySpc-dplyr.Rmd</code></div>
@@ -109,8 +109,7 @@
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="kw">c</span> <span class="op">&gt;</span> <span class="fl">0.2</span>)
 
 <span class="kw">flu</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="kw">c</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/between.html">between</a></span> (<span class="fl">0.15</span>, <span class="fl">0.25</span>))
-</pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="kw">c</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/between.html">between</a></span> (<span class="fl">0.15</span>, <span class="fl">0.25</span>))</pre></div>
 <p>The filter conditions (logical predicates) must yield one logical value per row. Logical expressions on the spectra matrix such as <code>spc &gt; 100</code> yield a logical <em>matrix</em>. This matrix indicates which <em>elements</em> of the spectra matrix match the condition.</p>
 <p>To obtain the logical vector that indicates which <em>spectra</em> (rows) should be kept, further information is needed: should a spectrum be kept if <em>any</em> of its intensity values (spectra matrix elements) fulfills the condition, or only if <em>all</em> of them do? <code>hyperSpec</code> functions <code>any_wl()</code> and <code>all_wl()</code> summarize the logical matrix in this way.</p>
 <p>Typical filtering tasks based on the spectra matrix are:</p>
@@ -119,29 +118,25 @@
 <p>remove “empty” spectra which have <code>NA</code>s at all wavelengths (which may be produced by certain import functions):</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="kw">flu</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="op">!</span><span class="fu">all_wl</span> (<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> (<span class="kw">spc</span>)))
-</pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="op">!</span><span class="fu">all_wl</span> (<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> (<span class="kw">spc</span>)))</pre></div>
 </li>
 <li>
 <p>remove spectra which have <code>NA</code>s at any wavelength (for example after spikes or other artifacts have been marked by <code>NA</code>s):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="kw">flu</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="op">!</span><span class="fu">any_wl</span> (<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> (<span class="kw">spc</span>)))
-</pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="op">!</span><span class="fu">any_wl</span> (<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> (<span class="kw">spc</span>)))</pre></div>
 </li>
 <li>
 <p>keep only spectra with all intensities inside a specified range (e.g. non-negative and below a saturation threshold):</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="kw">flu</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="fu">all_wl</span> (<span class="fu"><a href="../reference/between.html">between</a></span> (<span class="kw">spc</span>, <span class="fl">0</span>, <span class="fl">500</span>)))
-</pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="fu">all_wl</span> (<span class="fu"><a href="../reference/between.html">between</a></span> (<span class="kw">spc</span>, <span class="fl">0</span>, <span class="fl">500</span>)))</pre></div>
 </li>
 <li>
 <p>keep only spectra with <em>average</em> intensity inside a specified range (e.g. non-negative and below a saturation threshold):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="kw">flu</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span> (<span class="kw">spc</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/between.html">between</a></span> (<span class="fl">0</span>, <span class="fl">500</span>))
-</pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> (<span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span> (<span class="kw">spc</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/between.html">between</a></span> (<span class="fl">0</span>, <span class="fl">500</span>))</pre></div>
 <p>Here, <code>any_wl()</code> or <code>all_wl()</code> are not needed: the spectra are already summarized into a single intensity value by <code><a href="https://rdrr.io/r/base/colSums.html">rowMeans()</a></code>. The condition therefore evaluates to a one logical value per spectrum already - which is what is needed.</p>
 </li>
 </ul>
@@ -157,8 +152,7 @@
   <span class="fu">slice</span> (<span class="op">-</span><span class="fl">10</span> <span class="op">:</span> <span class="op">-</span><span class="fu">n</span>())
 
 <span class="kw">flu</span> <span class="op">%&gt;%</span> 
-  <span class="fu">slice</span> (<span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>)
-</pre></div>
+  <span class="fu">slice</span> (<span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>)</pre></div>
 <p>Also, <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> and <code><a href="https://rdrr.io/r/utils/head.html">tail()</a></code> work as usual.</p>
 </div>
 <div id="selecting-particular-data-columns-select" class="section level2">
@@ -176,8 +170,7 @@
 <span class="co">#&gt; wavelength: Delta * tilde(nu)/cm^-1 [numeric] 602 606 ... 1798 </span>
 <span class="co">#&gt; data:  (875 rows x 2 columns)</span>
 <span class="co">#&gt;    1. clusters: clusters [factor] matrix matrix ... lacuna + NA</span>
-<span class="co">#&gt;    2. spc: I / a.u. [matrix, array300] 501.8194 500.4552 ... 169.2942</span>
-</pre></div>
+<span class="co">#&gt;    2. spc: I / a.u. [matrix, array300] 501.8194 500.4552 ... 169.2942</span></pre></div>
 <p>If the result does not have the spectra matrix <em>in <code>$spc</code></em>, it will be returned as <code>data.frame</code>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">
 <span class="kw">flu</span> <span class="op">%&gt;%</span> 
@@ -188,8 +181,7 @@
 <span class="co">#&gt; 3 rawdata/flu3.txt 0.15</span>
 <span class="co">#&gt; 4 rawdata/flu4.txt 0.20</span>
 <span class="co">#&gt; 5 rawdata/flu5.txt 0.25</span>
-<span class="co">#&gt; 6 rawdata/flu6.txt 0.30</span>
-</pre></div>
+<span class="co">#&gt; 6 rawdata/flu6.txt 0.30</span></pre></div>
 <p>To convert such a <code>data.frame</code> into a <code>hyperSpec</code> object again, use <code>as.hyperSpec</code>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit">
 <span class="kw">flu</span> <span class="op">%&gt;%</span> 
@@ -203,8 +195,7 @@
 <span class="co">#&gt; data:  (6 rows x 3 columns)</span>
 <span class="co">#&gt;    1. filename: filename [character] rawdata/flu1.txt rawdata/flu2.txt ... rawdata/flu6.txt </span>
 <span class="co">#&gt;    2. c: c / (mg / l) [numeric] 0.05 0.10 ... 0.3 </span>
-<span class="co">#&gt;    3. spc:  [matrix, array0]</span>
-</pre></div>
+<span class="co">#&gt;    3. spc:  [matrix, array0]</span></pre></div>
 <p>The resulting <code>hyperSpec</code> object has 0 wavelengths: its <code>$spc</code> column contains a spectra matrix with 0 columns, and its wavelength vector is also of length 0. Behind the scenes, the <code>data.frame</code> returned by <code>select()</code> gets an attribute <code>labels</code> which stores the labels of the <code>hyperSpec</code> object. <code>as.hyperSpec()</code> restores the labels from this attribute (if available). Therfore, the “back-converted” <code>hyperSpec</code> object has its labels preserved.</p>
 </div>
 <div id="renaming-extra-data-columns-rename" class="section level2">
@@ -225,8 +216,7 @@
 <span class="co">#&gt;    2. x: x [numeric] -11.55 -10.55 ... 22.45 </span>
 <span class="co">#&gt;    3. filename: filename [character] rawdata/chondro.txt rawdata/chondro.txt ... rawdata/chondro.txt </span>
 <span class="co">#&gt;    4. region: region [factor] matrix matrix ... lacuna + NA</span>
-<span class="co">#&gt;    5. spc: I / a.u. [matrix, array300] 501.8194 500.4552 ... 169.2942</span>
-</pre></div>
+<span class="co">#&gt;    5. spc: I / a.u. [matrix, array300] 501.8194 500.4552 ... 169.2942</span></pre></div>
 </div>
 <div id="mutating-data-columns-for-hyperspec-object-mutate" class="section level2">
 <h2 class="hasAnchor">
@@ -248,7 +238,7 @@
  <span class="kw">head</span> <span class="co"># =&gt; results in a hyperSpec object</span>
 <span class="co">#&gt; function (x, ...) </span>
 <span class="co">#&gt; UseMethod("head")</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fc607a3db48&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fac9314de78&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:utils&gt;</span>
  
 <span class="kw">laser</span> <span class="op">%&gt;%</span>
@@ -278,8 +268,7 @@
 <span class="co">#&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 112.086 </span>
 <span class="co">#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz ... rawdata/laser.txt.gz </span>
 <span class="co">#&gt;    4. spc2:  [matrix, array36] 329.300 359.448 ... 224.172 </span>
-<span class="co">#&gt;    5. spc2 * 2:  [matrix, array36] 658.600 718.896 ... 448.344</span>
-</pre></div>
+<span class="co">#&gt;    5. spc2 * 2:  [matrix, array36] 658.600 718.896 ... 448.344</span></pre></div>
 </div>
 <div id="transmuting-data-columns-for-hyperspec-object-transmute" class="section level2">
 <h2 class="hasAnchor">
@@ -377,7 +366,7 @@
  <span class="kw">head</span> <span class="co"># =&gt; results in a data frame</span>
 <span class="co">#&gt; function (x, ...) </span>
 <span class="co">#&gt; UseMethod("head")</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fc607a3db48&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fac9314de78&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:utils&gt;</span>
  
 <span class="kw">laser</span> <span class="op">%&gt;%</span>
@@ -1073,8 +1062,7 @@
 <span class="co">#&gt;    36 data points / spectrum</span>
 <span class="co">#&gt; wavelength: lambda/nm [numeric] 404.5828 404.6181 ... 405.8176 </span>
 <span class="co">#&gt; data:  (84 rows x 1 columns)</span>
-<span class="co">#&gt;    1. spc2 * 2:  [matrix, array36] 658.600 718.896 ... 448.344</span>
-</pre></div>
+<span class="co">#&gt;    1. spc2 * 2:  [matrix, array36] 658.600 718.896 ... 448.344</span></pre></div>
 </div>
 <div id="setting-labels-setlabels" class="section level2">
 <h2 class="hasAnchor">
@@ -1092,8 +1080,7 @@
 <span class="co">#&gt; data:  (6 rows x 3 columns)</span>
 <span class="co">#&gt;    1. spc: I[fl]/"a.u." [matrix, array181] 27.15000 66.80133 ... 294.6495 </span>
 <span class="co">#&gt;    2. filename: filename [character] rawdata/flu1.txt rawdata/flu2.txt ... rawdata/flu6.txt </span>
-<span class="co">#&gt;    3. c: c / ml [numeric] 0.05 0.10 ... 0.3</span>
-</pre></div>
+<span class="co">#&gt;    3. c: c / ml [numeric] 0.05 0.10 ... 0.3</span></pre></div>
 </div>
 <div id="selecting-wavelength-ranges" class="section level2">
 <h2 class="hasAnchor">
@@ -1118,27 +1105,33 @@
 <span class="co">#&gt; [8] base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] hySpc.dplyr_0.3.0       magrittr_1.5            dplyr_1.0.2            </span>
-<span class="co">#&gt; [4] hyperSpec_0.99-20200527 xml2_1.3.2              ggplot2_3.3.2          </span>
-<span class="co">#&gt; [7] lattice_0.20-41        </span>
+<span class="co">#&gt; [1] hySpc.dplyr_0.3.0        magrittr_1.5             hySpc.chondro_0.0.0.9000</span>
+<span class="co">#&gt; [4] dplyr_1.0.2              hyperSpec_0.100.0        ggplot2_3.3.2           </span>
+<span class="co">#&gt; [7] lattice_0.20-41         </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] RColorBrewer_1.1-2   compiler_4.0.2       pillar_1.4.6        </span>
-<span class="co">#&gt;  [4] tools_4.0.2          testthat_2.3.2       digest_0.6.25       </span>
-<span class="co">#&gt;  [7] evaluate_0.14        memoise_1.1.0        lifecycle_0.2.0     </span>
-<span class="co">#&gt; [10] tibble_3.0.3         gtable_0.3.0         png_0.1-7           </span>
-<span class="co">#&gt; [13] pkgconfig_2.0.3      rlang_0.4.7          yaml_2.2.1          </span>
-<span class="co">#&gt; [16] pkgdown_1.5.1.9000   xfun_0.16            withr_2.2.0         </span>
-<span class="co">#&gt; [19] stringr_1.4.0        knitr_1.29           desc_1.2.0          </span>
-<span class="co">#&gt; [22] generics_0.0.2       fs_1.5.0             vctrs_0.3.2         </span>
-<span class="co">#&gt; [25] rprojroot_1.3-2      tidyselect_1.1.0     glue_1.4.1          </span>
-<span class="co">#&gt; [28] R6_2.4.1             jpeg_0.1-8.1         rmarkdown_2.3.3     </span>
-<span class="co">#&gt; [31] latticeExtra_0.6-29  purrr_0.3.4          backports_1.1.9     </span>
-<span class="co">#&gt; [34] scales_1.1.1         htmltools_0.5.0      ellipsis_0.3.1      </span>
-<span class="co">#&gt; [37] hySpc.testthat_0.2.1 assertthat_0.2.1     colorspace_1.4-1    </span>
-<span class="co">#&gt; [40] stringi_1.4.6        lazyeval_0.2.2       munsell_0.5.0       </span>
-<span class="co">#&gt; [43] crayon_1.3.4</span>
-</pre></div>
+<span class="co">#&gt;  [1] RColorBrewer_1.1-2        compiler_4.0.2           </span>
+<span class="co">#&gt;  [3] pillar_1.4.6              tools_4.0.2              </span>
+<span class="co">#&gt;  [5] testthat_2.3.2            digest_0.6.25            </span>
+<span class="co">#&gt;  [7] evaluate_0.14             memoise_1.1.0            </span>
+<span class="co">#&gt;  [9] lifecycle_0.2.0           tibble_3.0.3             </span>
+<span class="co">#&gt; [11] gtable_0.3.0              png_0.1-7                </span>
+<span class="co">#&gt; [13] pkgconfig_2.0.3           rlang_0.4.7              </span>
+<span class="co">#&gt; [15] yaml_2.2.1                pkgdown_1.5.1.9000       </span>
+<span class="co">#&gt; [17] xfun_0.16                 xml2_1.3.2               </span>
+<span class="co">#&gt; [19] withr_2.2.0               stringr_1.4.0            </span>
+<span class="co">#&gt; [21] knitr_1.29                desc_1.2.0               </span>
+<span class="co">#&gt; [23] generics_0.0.2            fs_1.5.0                 </span>
+<span class="co">#&gt; [25] vctrs_0.3.4               rprojroot_1.3-2          </span>
+<span class="co">#&gt; [27] tidyselect_1.1.0          glue_1.4.2               </span>
+<span class="co">#&gt; [29] R6_2.4.1                  jpeg_0.1-8.1             </span>
+<span class="co">#&gt; [31] rmarkdown_2.3.3           latticeExtra_0.6-29      </span>
+<span class="co">#&gt; [33] purrr_0.3.4               backports_1.1.9          </span>
+<span class="co">#&gt; [35] scales_1.1.1              htmltools_0.5.0          </span>
+<span class="co">#&gt; [37] ellipsis_0.3.1            assertthat_0.2.1         </span>
+<span class="co">#&gt; [39] hySpc.testthat_0.2.1.9000 colorspace_1.4-1         </span>
+<span class="co">#&gt; [41] stringi_1.4.6             lazyeval_0.2.2           </span>
+<span class="co">#&gt; [43] munsell_0.5.0             crayon_1.3.4</span></pre></div>
 </div>
   </div>
 

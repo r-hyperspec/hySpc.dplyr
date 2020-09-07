@@ -178,7 +178,8 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
     <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='kw'>laser</span>, <span class='kw'>t</span> <span class='op'>&lt;</span> <span class='fl'>250</span>)</div><div class='output co'>#&gt; hyperSpec object
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='kw'>laser</span>, <span class='kw'>t</span> <span class='op'>&lt;</span> <span class='fl'>250</span>)
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    5 spectra
 #&gt;    3 data columns
 #&gt;    36 data points / spectrum
@@ -186,7 +187,8 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 #&gt; data:  (5 rows x 3 columns)
 #&gt;    1. t: t / s [numeric] 0 2 72 142 212 
 #&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 136.604 
-#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz </div><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='kw'>t</span> <span class='op'>&lt;</span> <span class='fl'>250</span>)</div><div class='output co'>#&gt; hyperSpec object
+#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz </div><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='kw'>t</span> <span class='op'>&lt;</span> <span class='fl'>250</span>)
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    5 spectra
 #&gt;    3 data columns
 #&gt;    36 data points / spectrum
@@ -201,7 +203,8 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 <span class='kw'>tmp</span> [[<span class='fl'>3</span><span class='op'>:</span><span class='fl'>4</span>, , <span class='fl'>404.7</span> <span class='op'>~</span> <span class='fl'>404.9</span>]] <span class='op'>&lt;-</span> <span class='fl'>NA</span>
 <span class='kw'>tmp</span> [[<span class='fl'>6</span>]] <span class='op'>&lt;-</span> <span class='fl'>NA</span>
 
-<span class='kw'>tmp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='op'>!</span><span class='fu'>any_wl</span>(<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>spc</span>)))</div><div class='output co'>#&gt; hyperSpec object
+<span class='kw'>tmp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='op'>!</span><span class='fu'>any_wl</span>(<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>spc</span>)))
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    3 spectra
 #&gt;    3 data columns
 #&gt;    36 data points / spectrum
@@ -209,7 +212,8 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 #&gt; data:  (3 rows x 3 columns)
 #&gt;    1. t: t / s [numeric] 0 2 212 
 #&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 136.604 
-#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz </div><div class='input'><span class='kw'>tmp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='fu'>all_wl</span>(<span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>spc</span>))) <span class='co'># the same</span></div><div class='output co'>#&gt; hyperSpec object
+#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz </div><div class='input'><span class='kw'>tmp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='fu'>all_wl</span>(<span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>spc</span>))) <span class='co'># the same</span>
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    3 spectra
 #&gt;    3 data columns
 #&gt;    36 data points / spectrum
@@ -219,7 +223,8 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 #&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 136.604 
 #&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz </div><div class='input'>
 <span class='co'># remove spectra that contain /only/ NAs:</span>
-<span class='kw'>tmp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='op'>!</span><span class='fu'>all_wl</span>(<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>spc</span>)))</div><div class='output co'>#&gt; hyperSpec object
+<span class='kw'>tmp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='op'>!</span><span class='fu'>all_wl</span>(<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>spc</span>)))
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    5 spectra
 #&gt;    3 data columns
 #&gt;    36 data points / spectrum
@@ -227,7 +232,8 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 #&gt; data:  (5 rows x 3 columns)
 #&gt;    1. t: t / s [numeric] 0 2 72 142 212 
 #&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 136.604 + NA
-#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz </div><div class='input'><span class='kw'>tmp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='fu'>any_wl</span>(<span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>spc</span>))) <span class='co'># the same</span></div><div class='output co'>#&gt; hyperSpec object
+#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz </div><div class='input'><span class='kw'>tmp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='fu'>any_wl</span>(<span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>spc</span>))) <span class='co'># the same</span>
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    5 spectra
 #&gt;    3 data columns
 #&gt;    36 data points / spectrum
@@ -235,7 +241,8 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 #&gt; data:  (5 rows x 3 columns)
 #&gt;    1. t: t / s [numeric] 0 2 72 142 212 
 #&gt;    2. spc: I / a.u. [matrix, array36] 164.650 179.724 ... 136.604 + NA
-#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz </div><div class='input'><span class='kw'>tmp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='kw'>spc</span> <span class='op'>==</span> <span class='kw'>spc</span>) <span class='co'># the same(!) due to dplyr's handling of NAs</span></div><div class='output co'>#&gt; hyperSpec object
+#&gt;    3. filename: filename [character] rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz rawdata/laser.txt.gz </div><div class='input'><span class='kw'>tmp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='kw'>spc</span> <span class='op'>==</span> <span class='kw'>spc</span>) <span class='co'># the same(!) due to dplyr's handling of NAs</span>
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    5 spectra
 #&gt;    3 data columns
 #&gt;    36 data points / spectrum
@@ -248,7 +255,9 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 <span class='kw'>laser</span> <span class='op'>%T&gt;%</span>
      <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(spc.nmax = <span class='fl'>Inf</span>) <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowMeans</a></span>(<span class='kw'>spc</span>) <span class='op'>&gt;</span> <span class='fl'>9000</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(col = <span class='st'>"red"</span>, add = <span class='fl'>TRUE</span>)</div><div class='img'><img src='filter.hyperSpec-1.png' alt='' width='466' height='288' /></div><div class='input'><span class='kw'>chondro</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>)</div><div class='output co'>#&gt; hyperSpec object
+  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(col = <span class='st'>"red"</span>, add = <span class='fl'>TRUE</span>)
+</div><div class='img'><img src='filter.hyperSpec-1.png' alt='' width='466' height='288' /></div><div class='input'><span class='kw'>chondro</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>)
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    3 spectra
 #&gt;    5 data columns
 #&gt;    300 data points / spectrum
@@ -258,7 +267,8 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 #&gt;    2. x: x [numeric] -11.55 -10.55 -9.55 
 #&gt;    3. filename: filename [character] rawdata/chondro.txt rawdata/chondro.txt rawdata/chondro.txt 
 #&gt;    4. clusters: clusters [factor] matrix matrix matrix 
-#&gt;    5. spc: I / a.u. [matrix, array300] 501.8194 500.4552 ... 212.8019 </div><div class='input'><span class='kw'>chondro</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span>(<span class='fl'>800</span><span class='op'>:</span><span class='fu'>n</span>())</div><div class='output co'>#&gt; hyperSpec object
+#&gt;    5. spc: I / a.u. [matrix, array300] 501.8194 500.4552 ... 212.8019 </div><div class='input'><span class='kw'>chondro</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span>(<span class='fl'>800</span><span class='op'>:</span><span class='fu'>n</span>())
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    76 spectra
 #&gt;    5 data columns
 #&gt;    300 data points / spectrum
@@ -268,7 +278,8 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 #&gt;    2. x: x [numeric] 17.45 18.45 ... 22.45 
 #&gt;    3. filename: filename [character] rawdata/chondro.txt rawdata/chondro.txt ... rawdata/chondro.txt 
 #&gt;    4. clusters: clusters [factor] lacuna lacuna ... lacuna 
-#&gt;    5. spc: I / a.u. [matrix, array300] 383.4254 380.8118 ... 169.2942 </div><div class='input'><span class='kw'>chondro</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span>(<span class='op'>-</span><span class='fl'>10</span><span class='op'>:</span><span class='op'>-</span><span class='fu'>n</span>())</div><div class='output co'>#&gt; hyperSpec object
+#&gt;    5. spc: I / a.u. [matrix, array300] 383.4254 380.8118 ... 169.2942 </div><div class='input'><span class='kw'>chondro</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span>(<span class='op'>-</span><span class='fl'>10</span><span class='op'>:</span><span class='op'>-</span><span class='fu'>n</span>())
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    9 spectra
 #&gt;    5 data columns
 #&gt;    300 data points / spectrum

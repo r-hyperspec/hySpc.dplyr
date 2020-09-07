@@ -173,7 +173,8 @@ if ungrouped).</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>transmute</span> (<span class='kw'>t</span>, <span class='kw'>filename</span>)</div><div class='output co'>#&gt;       t             filename
+  <span class='fu'>transmute</span> (<span class='kw'>t</span>, <span class='kw'>filename</span>)
+</div><div class='output co'>#&gt;       t             filename
 #&gt; 1     0 rawdata/laser.txt.gz
 #&gt; 2     2 rawdata/laser.txt.gz
 #&gt; 3    72 rawdata/laser.txt.gz
@@ -257,11 +258,13 @@ if ungrouped).</p></li>
 #&gt; 81 5513 rawdata/laser.txt.gz
 #&gt; 82 5583 rawdata/laser.txt.gz
 #&gt; 83 5652 rawdata/laser.txt.gz
-#&gt; 84 5722 rawdata/laser.txt.gz</div><div class='input'>  <span class='kw'>head</span> <span class='co'># =&gt; results in a data frame</span></div><div class='output co'>#&gt; function (x, ...) 
+#&gt; 84 5722 rawdata/laser.txt.gz</div><div class='input'>  <span class='kw'>head</span> <span class='co'># =&gt; results in a data frame</span>
+</div><div class='output co'>#&gt; function (x, ...) 
 #&gt; UseMethod("head")
-#&gt; &lt;bytecode: 0x7f891a123808&gt;
+#&gt; &lt;bytecode: 0x7f8f79060208&gt;
 #&gt; &lt;environment: namespace:utils&gt;</div><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
-   <span class='fu'>transmute</span> (<span class='op'>-</span><span class='kw'>spc</span>) <span class='co'># =&gt; results in a hyperSpec object</span></div><div class='output co'>#&gt;    -spc.-75.4628 -spc.-73.3067 -spc.-71.151 -spc.-68.9958 -spc.-66.841
+   <span class='fu'>transmute</span> (<span class='op'>-</span><span class='kw'>spc</span>) <span class='co'># =&gt; results in a hyperSpec object</span>
+</div><div class='output co'>#&gt;    -spc.-75.4628 -spc.-73.3067 -spc.-71.151 -spc.-68.9958 -spc.-66.841
 #&gt; 1      -164.6500     -190.1970    -286.5130     -307.4540    -310.9960
 #&gt; 2      -179.7240     -192.5170    -247.0740     -313.2550    -338.8470
 #&gt; 3      -183.2020     -215.7120    -288.8330     -337.6190    -327.2420
@@ -943,7 +946,8 @@ if ungrouped).</p></li>
 #&gt; 84      -112.0860</div><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
    <span class='fu'>transmute</span> (spc2 = <span class='kw'>spc</span><span class='op'>*</span><span class='fl'>2</span>) <span class='op'>%&gt;%</span>
    <span class='fu'>transmute</span> (<span class='kw'>spc2</span>) <span class='op'>%&gt;%</span>
-   <span class='fu'>transmute</span> (<span class='kw'>spc2</span><span class='op'>*</span><span class='fl'>2</span>) <span class='co'># =&gt; results in a hyperSpec object</span></div><div class='output co'>#&gt; hyperSpec object
+   <span class='fu'>transmute</span> (<span class='kw'>spc2</span><span class='op'>*</span><span class='fl'>2</span>) <span class='co'># =&gt; results in a hyperSpec object</span>
+</div><div class='output co'>#&gt; hyperSpec object
 #&gt;    84 spectra
 #&gt;    1 data columns
 #&gt;    36 data points / spectrum

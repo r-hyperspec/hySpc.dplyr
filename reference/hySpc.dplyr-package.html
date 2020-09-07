@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run unit tests — hySpc.dplyr.unittest • hySpc.dplyr</title>
+<title>hySpc.dplyr: Fortify hyperSpec for Use with dplyr — hySpc.dplyr-package • hySpc.dplyr</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Run unit tests — hySpc.dplyr.unittest" />
-<meta property="og:description" content="If testthat::testthat() is available, run the unit tests and
-display the results." />
+<meta property="og:title" content="hySpc.dplyr: Fortify hyperSpec for Use with dplyr — hySpc.dplyr-package" />
+<meta property="og:description" content="dplyr functions like select, filter etc. are provided for hyperSpec objects.
+    This allows smoother integration of hyperSpec into the tidyverse and also smoother working with pipes (magrittr)." />
 
 
 
@@ -126,51 +126,29 @@ display the results." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Run unit tests</h1>
+    <h1>hySpc.dplyr: Fortify hyperSpec for Use with dplyr</h1>
     
-    <div class="hidden name"><code>unittests.Rd</code></div>
+    <div class="hidden name"><code>hySpc.dplyr-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>If <code><a href='https://testthat.r-lib.org/reference/testthat-package.html'>testthat::testthat()</a></code> is available, run the unit tests and
-display the results.</p>
+    <p>dplyr functions like select, filter etc. are provided for hyperSpec objects.
+    This allows smoother integration of hyperSpec into the tidyverse and also smoother working with pipes (magrittr).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>hySpc.dplyr.unittest</span>()</pre>
 
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Invisibly returns a data.frame with the test results</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Claudia Beleites</p>
+    <p><strong>Maintainer</strong>: Claudia Beleites <a href='mailto:Claudia.Beleites@chemometrix.gmbh'>Claudia.Beleites@chemometrix.gmbh</a></p>
+<p>Authors:</p><ul>
+<li><p>Erick Oduniyi</p></li>
+<li><p>Vilmantas Gegzna</p></li>
+<li><p>Bryan Hanson</p></li>
+</ul>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>hySpc.dplyr.unittest</span> ()
-</div><div class='output co'>#&gt; between: <span style='color: #00BB00;'>.</span><span>
-#&gt; rename.hyperSpec: </span><span style='color: #00BB00;'>...</span><span>
-#&gt; filter: </span><span style='color: #00BB00;'>........</span><span style='color: #0000BB;'>S</span><span>
-#&gt; setLabels: </span><span style='color: #00BB00;'>..</span><span>
-#&gt; mutate.hyperSpec: </span><span style='color: #00BB00;'>...</span><span>
-#&gt; between: </span><span style='color: #00BB00;'>.</span><span>
-#&gt; slice: </span><span style='color: #00BB00;'>.....</span><span style='color: #0000BB;'>S</span><span>
-#&gt; select.hyperSpec: </span><span style='color: #00BB00;'>..</span><span>
-#&gt; transmute.hyperSpec: </span><span style='color: #00BB00;'>.</span><span style='color: #0000BB;'>SS</span><span>
-#&gt; 
-#&gt; ══ Skipped ═════════════════════════════════════════════════════════════════════
-#&gt; </span><span style='color: #0000BB;'>1. grouping and filter</span><span> - Reason: grouping not yet implemented
-#&gt; 
-#&gt; </span><span style='color: #0000BB;'>2. grouping and slice</span><span> - Reason: grouping not yet implemented
-#&gt; 
-#&gt; </span><span style='color: #0000BB;'>3. arguments are correctly passed onto transmute</span><span> - Reason: @eoduniyi FIX SOMEHOW...
-#&gt; 
-#&gt; </span><span style='color: #0000BB;'>4. $spc can be used for mutation</span><span> - Reason: @eoduniyi FIX SOMEHOW...
-#&gt; 
-#&gt; ══ DONE ════════════════════════════════════════════════════════════════════════
-#&gt; </span><span style='color: #00BB00;'>Woot!</span><span></div><div class='input'>
-</div></span></pre>
+
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
