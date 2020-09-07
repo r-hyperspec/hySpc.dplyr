@@ -21,6 +21,7 @@ Additional_repositories:
 Depends:
     hyperSpec (>= 0.99-20200527),
     dplyr (>= 1.0.0),
+    hySpc.chondro,
     magrittr
 Imports:
     testthat,
@@ -39,6 +40,7 @@ Collate:
     'unittest.R'
     'between.R'
     'filter.R'
+    'hySpc.dplyr-package.R'
     'setLabels.R'
     'mutate.R'
     'rename.R'
