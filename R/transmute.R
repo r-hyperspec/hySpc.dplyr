@@ -1,8 +1,9 @@
-#' transmute for hyperSpec object
+#' Transmute for hyperSpec Object
 #'
 #' `transmute` adds new variables and drops all pre-existing variables.
 #' Special column `$spc` contains the spectra matrix.
-#' If `$spc` is not being transmuted, the result is a data.frame instead of a hyperSpec object.
+#' If `$spc` is not being transmuted, the result is a data.frame instead of a
+#' hyperSpec object.
 #'
 #' @inheritParams dplyr::transmute
 #'
@@ -20,14 +21,16 @@
 #'
 #' @examples
 #' laser %>%
-#'   transmute (t, filename)
-#'   head # => results in a data frame
+#'   transmute(t, filename) %>%
+#'   head() # => results in a data frame
+#'
 #' laser %>%
-#'    transmute (-spc) # => results in a hyperSpec object
+#'    transmute(-spc) # => results in a hyperSpec object
+#'
 #' laser %>%
-#'    transmute (spc2 = spc*2) %>%
-#'    transmute (spc2) %>%
-#'    transmute (spc2*2) # => results in a hyperSpec object
+#'    transmute(spc2 = spc*2) %>%
+#'    transmute(spc2) %>%
+#'    transmute(spc2*2) # => results in a hyperSpec object
 transmute.hyperSpec <- function(.data, ...) {
 
   # Check if user passed in a hyperSpec object

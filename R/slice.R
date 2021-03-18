@@ -9,7 +9,7 @@
 #' chondro %>% slice(-10:-n())
 slice.hyperSpec <- function(.data, ..., .preserve = FALSE) {
   .data@data <- slice(.data@data, ..., .preserve = .preserve)
-  .data <- .fix_spc_colnames(.data)
+  .data <- .spc_fix_colnames(.data)
 
   chk.hy(.data)
 
