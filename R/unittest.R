@@ -19,7 +19,7 @@
 #' @examples
 #'
 #' hySpc.dplyr.unittest()
-#'
+
 hySpc.dplyr.unittest <- function() {
   if (!requireNamespace("testthat", quietly = TRUE)) {
     warning("Package testthat required to run the unit tests.")
@@ -67,5 +67,5 @@ get.test <- function(object) {
   .testdata <- flu[, , min ~ 410]
   .testdata[[6, ]] <- NA
   .testdata[[3:4,, 406~407]] <- NA
-  .testdata$region <- factor (c("a", "a", "b", "b", "a", "a"))
+  .testdata$region <- factor(c("a", "a", "b", "b", "a", "a"))
 }
