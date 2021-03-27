@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>transmute for hyperSpec object — transmute.hyperSpec • hySpc.dplyr</title>
+<title>Transmute for hyperSpec Object — transmute.hyperSpec • hySpc.dplyr</title>
 
 
 <!-- jquery -->
@@ -41,10 +41,11 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="transmute for hyperSpec object — transmute.hyperSpec" />
+<meta property="og:title" content="Transmute for hyperSpec Object — transmute.hyperSpec" />
 <meta property="og:description" content="transmute adds new variables and drops all pre-existing variables.
 Special column $spc contains the spectra matrix.
-If $spc is not being transmuted, the result is a data.frame instead of a hyperSpec object." />
+If $spc is not being transmuted, the result is a data.frame instead of a
+hyperSpec object." />
 
 
 
@@ -84,7 +85,7 @@ If $spc is not being transmuted, the result is a data.frame instead of a hyperSp
       <ul class="nav navbar-nav">
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-book"></span>
+    <span class="fas fa-book"></span>
      
      
     <span class="caret"></span>
@@ -101,7 +102,7 @@ If $spc is not being transmuted, the result is a data.frame instead of a hyperSp
 </li>
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -127,7 +128,7 @@ If $spc is not being transmuted, the result is a data.frame instead of a hyperSp
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>transmute for hyperSpec object</h1>
+    <h1>Transmute for hyperSpec Object</h1>
     
     <div class="hidden name"><code>transmute.hyperSpec.Rd</code></div>
     </div>
@@ -135,11 +136,12 @@ If $spc is not being transmuted, the result is a data.frame instead of a hyperSp
     <div class="ref-description">
     <p><code>transmute</code> adds new variables and drops all pre-existing variables.
 Special column <code>$spc</code> contains the spectra matrix.
-If <code>$spc</code> is not being transmuted, the result is a data.frame instead of a hyperSpec object.</p>
+If <code>$spc</code> is not being transmuted, the result is a data.frame instead of a
+hyperSpec object.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for hyperSpec</span>
-<span class='fu'>transmute</span>(<span class='kw'>.data</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>transmute</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -172,98 +174,18 @@ if ungrouped).</p></li>
     <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/mutate.html'>dplyr::transmute()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>transmute</span> (<span class='kw'>t</span>, <span class='kw'>filename</span>)
-</div><div class='output co'>#&gt;       t             filename
-#&gt; 1     0 rawdata/laser.txt.gz
-#&gt; 2     2 rawdata/laser.txt.gz
-#&gt; 3    72 rawdata/laser.txt.gz
-#&gt; 4   142 rawdata/laser.txt.gz
-#&gt; 5   212 rawdata/laser.txt.gz
-#&gt; 6   281 rawdata/laser.txt.gz
-#&gt; 7   351 rawdata/laser.txt.gz
-#&gt; 8   421 rawdata/laser.txt.gz
-#&gt; 9   491 rawdata/laser.txt.gz
-#&gt; 10  560 rawdata/laser.txt.gz
-#&gt; 11  630 rawdata/laser.txt.gz
-#&gt; 12  699 rawdata/laser.txt.gz
-#&gt; 13  769 rawdata/laser.txt.gz
-#&gt; 14  839 rawdata/laser.txt.gz
-#&gt; 15  909 rawdata/laser.txt.gz
-#&gt; 16  979 rawdata/laser.txt.gz
-#&gt; 17 1049 rawdata/laser.txt.gz
-#&gt; 18 1119 rawdata/laser.txt.gz
-#&gt; 19 1189 rawdata/laser.txt.gz
-#&gt; 20 1259 rawdata/laser.txt.gz
-#&gt; 21 1328 rawdata/laser.txt.gz
-#&gt; 22 1399 rawdata/laser.txt.gz
-#&gt; 23 1468 rawdata/laser.txt.gz
-#&gt; 24 1538 rawdata/laser.txt.gz
-#&gt; 25 1608 rawdata/laser.txt.gz
-#&gt; 26 1678 rawdata/laser.txt.gz
-#&gt; 27 1748 rawdata/laser.txt.gz
-#&gt; 28 1818 rawdata/laser.txt.gz
-#&gt; 29 1888 rawdata/laser.txt.gz
-#&gt; 30 1957 rawdata/laser.txt.gz
-#&gt; 31 2026 rawdata/laser.txt.gz
-#&gt; 32 2096 rawdata/laser.txt.gz
-#&gt; 33 2166 rawdata/laser.txt.gz
-#&gt; 34 2236 rawdata/laser.txt.gz
-#&gt; 35 2305 rawdata/laser.txt.gz
-#&gt; 36 2375 rawdata/laser.txt.gz
-#&gt; 37 2445 rawdata/laser.txt.gz
-#&gt; 38 2515 rawdata/laser.txt.gz
-#&gt; 39 2584 rawdata/laser.txt.gz
-#&gt; 40 2654 rawdata/laser.txt.gz
-#&gt; 41 2724 rawdata/laser.txt.gz
-#&gt; 42 2793 rawdata/laser.txt.gz
-#&gt; 43 2863 rawdata/laser.txt.gz
-#&gt; 44 2933 rawdata/laser.txt.gz
-#&gt; 45 3003 rawdata/laser.txt.gz
-#&gt; 46 3073 rawdata/laser.txt.gz
-#&gt; 47 3143 rawdata/laser.txt.gz
-#&gt; 48 3212 rawdata/laser.txt.gz
-#&gt; 49 3281 rawdata/laser.txt.gz
-#&gt; 50 3351 rawdata/laser.txt.gz
-#&gt; 51 3421 rawdata/laser.txt.gz
-#&gt; 52 3491 rawdata/laser.txt.gz
-#&gt; 53 3561 rawdata/laser.txt.gz
-#&gt; 54 3630 rawdata/laser.txt.gz
-#&gt; 55 3700 rawdata/laser.txt.gz
-#&gt; 56 3770 rawdata/laser.txt.gz
-#&gt; 57 3840 rawdata/laser.txt.gz
-#&gt; 58 3909 rawdata/laser.txt.gz
-#&gt; 59 3979 rawdata/laser.txt.gz
-#&gt; 60 4049 rawdata/laser.txt.gz
-#&gt; 61 4119 rawdata/laser.txt.gz
-#&gt; 62 4189 rawdata/laser.txt.gz
-#&gt; 63 4259 rawdata/laser.txt.gz
-#&gt; 64 4328 rawdata/laser.txt.gz
-#&gt; 65 4398 rawdata/laser.txt.gz
-#&gt; 66 4467 rawdata/laser.txt.gz
-#&gt; 67 4537 rawdata/laser.txt.gz
-#&gt; 68 4607 rawdata/laser.txt.gz
-#&gt; 69 4677 rawdata/laser.txt.gz
-#&gt; 70 4747 rawdata/laser.txt.gz
-#&gt; 71 4817 rawdata/laser.txt.gz
-#&gt; 72 4886 rawdata/laser.txt.gz
-#&gt; 73 4956 rawdata/laser.txt.gz
-#&gt; 74 5026 rawdata/laser.txt.gz
-#&gt; 75 5095 rawdata/laser.txt.gz
-#&gt; 76 5164 rawdata/laser.txt.gz
-#&gt; 77 5234 rawdata/laser.txt.gz
-#&gt; 78 5304 rawdata/laser.txt.gz
-#&gt; 79 5373 rawdata/laser.txt.gz
-#&gt; 80 5443 rawdata/laser.txt.gz
-#&gt; 81 5513 rawdata/laser.txt.gz
-#&gt; 82 5583 rawdata/laser.txt.gz
-#&gt; 83 5652 rawdata/laser.txt.gz
-#&gt; 84 5722 rawdata/laser.txt.gz</div><div class='input'>  <span class='kw'>head</span> <span class='co'># =&gt; results in a data frame</span>
-</div><div class='output co'>#&gt; function (x, ...) 
-#&gt; UseMethod("head")
-#&gt; &lt;bytecode: 0x7f8f79060208&gt;
-#&gt; &lt;environment: namespace:utils&gt;</div><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
-   <span class='fu'>transmute</span> (<span class='op'>-</span><span class='kw'>spc</span>) <span class='co'># =&gt; results in a hyperSpec object</span>
+    <pre class="examples"><div class='input'><span class='va'>laser</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>transmute</span><span class='op'>(</span><span class='va'>t</span>, <span class='va'>filename</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># =&gt; results in a data frame</span>
+</div><div class='output co'>#&gt;     t             filename
+#&gt; 1   0 rawdata/laser.txt.gz
+#&gt; 2   2 rawdata/laser.txt.gz
+#&gt; 3  72 rawdata/laser.txt.gz
+#&gt; 4 142 rawdata/laser.txt.gz
+#&gt; 5 212 rawdata/laser.txt.gz
+#&gt; 6 281 rawdata/laser.txt.gz</div><div class='input'>
+<span class='va'>laser</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>transmute</span><span class='op'>(</span><span class='op'>-</span><span class='va'>spc</span><span class='op'>)</span> <span class='co'># =&gt; results in a hyperSpec object</span>
 </div><div class='output co'>#&gt;    -spc.-75.4628 -spc.-73.3067 -spc.-71.151 -spc.-68.9958 -spc.-66.841
 #&gt; 1      -164.6500     -190.1970    -286.5130     -307.4540    -310.9960
 #&gt; 2      -179.7240     -192.5170    -247.0740     -313.2550    -338.8470
@@ -943,17 +865,15 @@ if ungrouped).</p></li>
 #&gt; 81      -115.5880
 #&gt; 82      -119.0910
 #&gt; 83      -115.5880
-#&gt; 84      -112.0860</div><div class='input'><span class='kw'>laser</span> <span class='op'>%&gt;%</span>
-   <span class='fu'>transmute</span> (spc2 = <span class='kw'>spc</span><span class='op'>*</span><span class='fl'>2</span>) <span class='op'>%&gt;%</span>
-   <span class='fu'>transmute</span> (<span class='kw'>spc2</span>) <span class='op'>%&gt;%</span>
-   <span class='fu'>transmute</span> (<span class='kw'>spc2</span><span class='op'>*</span><span class='fl'>2</span>) <span class='co'># =&gt; results in a hyperSpec object</span>
+#&gt; 84      -112.0860</div><div class='input'>
+<span class='va'>laser</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>transmute</span><span class='op'>(</span>spc2 <span class='op'>=</span> <span class='va'>spc</span><span class='op'>*</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>transmute</span><span class='op'>(</span><span class='va'>spc2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+   <span class='fu'>transmute</span><span class='op'>(</span><span class='va'>spc2</span><span class='op'>*</span><span class='fl'>2</span><span class='op'>)</span> <span class='co'># =&gt; results in a hyperSpec object</span>
 </div><div class='output co'>#&gt; hyperSpec object
 #&gt;    84 spectra
 #&gt;    1 data columns
-#&gt;    36 data points / spectrum
-#&gt; wavelength: lambda/nm [numeric] 404.5828 404.6181 ... 405.8176 
-#&gt; data:  (84 rows x 1 columns)
-#&gt;    1. spc2 * 2:  [matrix, array36] 658.600 718.896 ... 448.344 </div></pre>
+#&gt;    36 data points / spectrum</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -969,7 +889,7 @@ if ungrouped).</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

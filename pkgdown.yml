@@ -1,6 +1,7 @@
 pandoc: 2.7.3
-pkgdown: 1.5.1.9000
-pkgdown_sha: e703cfe666586d3517c5da39f8dbd1f0816b7d3b
-articles: []
-last_built: 2020-09-07T16:31Z
+pkgdown: 1.6.1.9000
+pkgdown_sha: 98997183e2235df47731f89b17e44f13b9c33991
+articles:
+  hySpc-dplyr: hySpc-dplyr.html
+last_built: 2021-03-27T09:41Z
 

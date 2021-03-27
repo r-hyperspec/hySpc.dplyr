@@ -82,7 +82,7 @@
       <ul class="nav navbar-nav">
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-book"></span>
+    <span class="fas fa-book"></span>
      
      
     <span class="caret"></span>
@@ -99,7 +99,7 @@
 </li>
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -134,13 +134,13 @@
     <p>Between is a shortcut function for <code>x &gt;= left &amp; x &lt;= right</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>between</span>(<span class='kw'>x</span>, <span class='kw'>left</span>, <span class='kw'>right</span>)
+    <pre class="usage"><span class='fu'>between</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>left</span>, <span class='va'>right</span><span class='op'>)</span>
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>between</span>(<span class='kw'>x</span>, <span class='kw'>left</span>, <span class='kw'>right</span>)
+<span class='fu'>between</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>left</span>, <span class='va'>right</span><span class='op'>)</span>
 
 <span class='co'># S4 method for hyperSpec</span>
-<span class='fu'>between</span>(<span class='kw'>x</span>, <span class='kw'>left</span>, <span class='kw'>right</span>)</pre>
+<span class='fu'>between</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>left</span>, <span class='va'>right</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,11 +151,11 @@
     </tr>
     <tr>
       <th>left</th>
-      <td><p>Boundary values</p></td>
+      <td><p>Boundary values (must be scalars).</p></td>
     </tr>
     <tr>
       <th>right</th>
-      <td><p>Boundary values</p></td>
+      <td><p>Boundary values (must be scalars).</p></td>
     </tr>
     </table>
 
@@ -167,7 +167,7 @@
     <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/between.html'>dplyr::between()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>between</span>(<span class='kw'>flu</span> [[]], <span class='fl'>100</span>, <span class='fl'>400</span>)
+    <pre class="examples"><div class='input'><span class='fu'>between</span><span class='op'>(</span><span class='va'>flu</span> <span class='op'>[[</span><span class='op'>]</span><span class='op'>]</span>, <span class='fl'>100</span>, <span class='fl'>400</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;        405 405.5   406 406.5   407 407.5   408 408.5   409 409.5   410 410.5
 #&gt; [1,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 #&gt; [2,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -279,7 +279,7 @@
 #&gt; [3,]  TRUE
 #&gt; [4,]  TRUE
 #&gt; [5,]  TRUE
-#&gt; [6,]  TRUE</div><div class='input'><span class='fu'>between</span>(<span class='kw'>flu</span> [[]], <span class='fl'>100</span>, <span class='fl'>400</span>)
+#&gt; [6,]  TRUE</div><div class='input'><span class='fu'>between</span><span class='op'>(</span><span class='va'>flu</span> <span class='op'>[[</span><span class='op'>]</span><span class='op'>]</span>, <span class='fl'>100</span>, <span class='fl'>400</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;        405 405.5   406 406.5   407 407.5   408 408.5   409 409.5   410 410.5
 #&gt; [1,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 #&gt; [2,] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -407,7 +407,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

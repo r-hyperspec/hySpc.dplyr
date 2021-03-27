@@ -82,7 +82,7 @@
       <ul class="nav navbar-nav">
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-book"></span>
+    <span class="fas fa-book"></span>
      
      
     <span class="caret"></span>
@@ -99,7 +99,7 @@
 </li>
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -134,13 +134,13 @@
     <p>Ensure that hyperSpec and non hyperSpec objects have the correct labels</p>
     </div>
 
-    <pre class="usage"><span class='fu'>setLabels</span>(<span class='kw'>.data</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>setLabels</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>setLabels_transmute</span>(<span class='kw'>.data</span>, <span class='kw'>...</span>)
+<span class='fu'>setLabels_transmute</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>setLabels_select</span>(<span class='kw'>.data</span>, <span class='kw'>res</span>)
+<span class='fu'>setLabels_select</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>res</span><span class='op'>)</span>
 
-<span class='fu'>setLabels_rename</span>(<span class='kw'>.data</span>, <span class='kw'>res</span>)</pre>
+<span class='fu'>setLabels_rename</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>res</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,17 +164,12 @@
     <p>Object with the correct labels</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>flu</span> <span class='op'>%&gt;%</span>
- <span class='fu'>setLabels</span>(.wavelength = <span class='st'>"f / THz"</span>, c = <span class='st'>"c / ml"</span>)
+    <pre class="examples"><div class='input'><span class='va'>flu</span> <span class='op'>%&gt;%</span>
+ <span class='fu'>setLabels</span><span class='op'>(</span>.wavelength <span class='op'>=</span> <span class='st'>"f / THz"</span>, c <span class='op'>=</span> <span class='st'>"c / ml"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; hyperSpec object
 #&gt;    6 spectra
 #&gt;    3 data columns
-#&gt;    181 data points / spectrum
-#&gt; wavelength: f / THz [numeric] 405.0 405.5 ... 495 
-#&gt; data:  (6 rows x 3 columns)
-#&gt;    1. spc: I[fl]/"a.u." [matrix, array181] 27.15000 66.80133 ... 294.6495 
-#&gt;    2. filename: filename [character] rawdata/flu1.txt rawdata/flu2.txt ... rawdata/flu6.txt 
-#&gt;    3. c: c / ml [numeric] 0.05 0.10 ... 0.3 </div><div class='input'>
+#&gt;    181 data points / spectrum</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -191,7 +186,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
