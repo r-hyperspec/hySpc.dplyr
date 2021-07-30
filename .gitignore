@@ -1,9 +1,45 @@
-.Rproj.user
+# Original file resides in r-hyperspec/pkg-skelton.
+# DO NOT EDIT in any other repo as these changes will be overwritten.
+# Edit at r-hyperspec/pkg-skelton, then push there and
+# this file will be deployed to the other repos.
+
+# History files
 .Rhistory
+.Rapp.history
+
+# Session Data files
 .RData
 .Ruserdata
-man/*.Rd
-vignettes/*.R
+
+# Example code in package build process
+*-Ex.R
+# Mac directory files
+*.DS_Store
+
+# RStudio files
+*.Rproj.user
+*.Rproj
+
+# Local pkgdown files
+docs/
+
+# Unit tests
+tests/testthat/Rplots.pdf
+tests/testthat/fileio
+
+# Vignettes
+vignettes/*-pkg.bib
 vignettes/*.html
-inst/doc
-docs
+vignettes/*.R
+vignettes/fileio
+vignettes/resources/*.bib
+
+# Documentation
+man/*.Rd
+NAMESPACE
+NEWS.html
+README.html
+
+# Other/Broad
+*.html
+_tmp/
