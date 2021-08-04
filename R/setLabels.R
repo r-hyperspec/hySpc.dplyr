@@ -5,7 +5,7 @@
 #' @return Object with the correct labels
 #' @md
 #'
-#' @importFrom hyperSpec chk.hy
+#' @importFrom hyperSpec assert_hyperSpec
 #' @importFrom hyperSpec labels labels<-
 #' @importFrom rlang enquos
 #' @importFrom rlang quo_name
@@ -19,7 +19,7 @@
 setLabels <- function(.data, ...) {
 
     # Check if user passed in a hyperSpec object
-    chk.hy(.data)
+    assert_hyperSpec(.data)
     args <- enquos(...)
     args_names <- names(args)
     labels2update <- args_names[args_names %in% names(labels(.data))]

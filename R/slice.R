@@ -11,7 +11,7 @@ slice.hyperSpec <- function(.data, ..., .preserve = FALSE) {
   .data@data <- slice(.data@data, ..., .preserve = .preserve)
   .data <- .spc_fix_colnames(.data)
 
-  chk.hy(.data)
+  assert_hyperSpec(.data)
 
   .data
 }

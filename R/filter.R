@@ -11,7 +11,7 @@
 #' @include unittest.R
 #' @seealso [dplyr::filter()]
 #' @importFrom dplyr filter
-#' @importFrom hyperSpec chk.hy
+#' @importFrom hyperSpec assert_hyperSpec
 #' @importFrom hyperSpec .spc_fix_colnames
 #' @importFrom testthat expect_equal
 #' @importFrom testthat expect_equivalent
@@ -47,7 +47,7 @@ filter.hyperSpec <- function(.data, ..., .preserve = FALSE) {
   .data@data <- filter(.data@data, ..., .preserve = .preserve)
   .data <- .spc_fix_colnames(.data)
 
-  chk.hy(.data)
+  assert_hyperSpec(.data)
 
   .data
 }

@@ -9,7 +9,7 @@
 #' @include unittest.R
 #' @include setLabels.R
 #' @seealso [dplyr::mutate()]
-#' @importFrom hyperSpec chk.hy
+#' @importFrom hyperSpec assert_hyperSpec
 #' @importFrom hyperSpec labels labels<-
 #' @importFrom rlang enquos
 #' @importFrom rlang quo_name
@@ -30,7 +30,7 @@
 mutate.hyperSpec <- function(.data, ...) {
 
     # Check if user passed in a hyperSpec object
-    chk.hy(.data)
+    assert_hyperSpec(.data)
 
     # Pass mutate arguments to dplyr::mutate
     res <- mutate(.data@data, ...)

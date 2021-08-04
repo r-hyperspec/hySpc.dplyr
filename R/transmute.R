@@ -11,7 +11,7 @@
 #' @include unittest.R
 #' @include setLabels.R
 #' @seealso [dplyr::transmute()]
-#' @importFrom hyperSpec chk.hy
+#' @importFrom hyperSpec assert_hyperSpec
 #' @importFrom hyperSpec labels labels<-
 #' @importFrom rlang enquos
 #' @importFrom rlang quo_name
@@ -34,7 +34,7 @@
 transmute.hyperSpec <- function(.data, ...) {
 
   # Check if user passed in a hyperSpec object
-  chk.hy(.data)
+  assert_hyperSpec(.data)
 
   # Pass transmute arguments to dplyr::transmute
   res <- transmute(.data@data, ...)
