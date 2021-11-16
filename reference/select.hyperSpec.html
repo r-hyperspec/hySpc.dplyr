@@ -172,37 +172,41 @@ be used to select a range of variables.</p></td>
     <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/select.html'>dplyr::select()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='va'>chondro</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>select</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>clusters</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># spc not selected =&gt; data.frame</span>
-</div><div class='output co'>#&gt;        x     y clusters
-#&gt; 1 -11.55 -4.77   matrix
-#&gt; 2 -10.55 -4.77   matrix
-#&gt; 3  -9.55 -4.77   matrix
-#&gt; 4  -8.55 -4.77   matrix
-#&gt; 5  -7.55 -4.77   matrix
-#&gt; 6  -6.55 -4.77   matrix</div><div class='input'><span class='va'>chondro</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>clusters</span>, <span class='va'>spc</span><span class='op'>)</span> <span class='co'># =&gt; hyperSpec object</span>
-</div><div class='output co'>#&gt; hyperSpec object
-#&gt;    875 spectra
-#&gt;    3 data columns
-#&gt;    300 data points / spectrum</div><div class='input'>
-<span class='va'>chondro</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>spc</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># all columns but $spc =&gt; data.frame same as chondro$..</span>
-</div><div class='output co'>#&gt;       y      x            filename clusters
-#&gt; 1 -4.77 -11.55 rawdata/chondro.txt   matrix
-#&gt; 2 -4.77 -10.55 rawdata/chondro.txt   matrix
-#&gt; 3 -4.77  -9.55 rawdata/chondro.txt   matrix
-#&gt; 4 -4.77  -8.55 rawdata/chondro.txt   matrix
-#&gt; 5 -4.77  -7.55 rawdata/chondro.txt   matrix
-#&gt; 6 -4.77  -6.55 rawdata/chondro.txt   matrix</div><div class='input'><span class='va'>chondro</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>spc</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>as.hyperSpec</span><span class='op'>(</span><span class='op'>)</span> <span class='co'># hyperSpec object with 0 wavelengths</span>
-</div><div class='output co'>#&gt; hyperSpec object
-#&gt;    875 spectra
-#&gt;    5 data columns
-#&gt;    0 data points / spectrum</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='va'>chondro</span> <span class='op'>%&gt;%</span></span>
+<span class='r-in'>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>clusters</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># spc not selected =&gt; data.frame</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        x     y clusters</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 -11.55 -4.77   matrix</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 -10.55 -4.77   matrix</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3  -9.55 -4.77   matrix</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4  -8.55 -4.77   matrix</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5  -7.55 -4.77   matrix</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6  -6.55 -4.77   matrix</span>
+<span class='r-in'><span class='va'>chondro</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>clusters</span>, <span class='va'>spc</span><span class='op'>)</span> <span class='co'># =&gt; hyperSpec object</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hyperSpec object</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    875 spectra</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    3 data columns</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    300 data points / spectrum</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>chondro</span> <span class='op'>%&gt;%</span></span>
+<span class='r-in'>  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>spc</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># all columns but $spc =&gt; data.frame same as chondro$..</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       y      x            filename clusters</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 -4.77 -11.55 rawdata/chondro.txt   matrix</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 -4.77 -10.55 rawdata/chondro.txt   matrix</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 -4.77  -9.55 rawdata/chondro.txt   matrix</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 -4.77  -8.55 rawdata/chondro.txt   matrix</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 -4.77  -7.55 rawdata/chondro.txt   matrix</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6 -4.77  -6.55 rawdata/chondro.txt   matrix</span>
+<span class='r-in'><span class='va'>chondro</span> <span class='op'>%&gt;%</span></span>
+<span class='r-in'>  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>spc</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span class='r-in'>  <span class='fu'>as.hyperSpec</span><span class='op'>(</span><span class='op'>)</span> <span class='co'># hyperSpec object with 0 wavelengths</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hyperSpec object</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    875 spectra</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    5 data columns</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    0 data points / spectrum</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
