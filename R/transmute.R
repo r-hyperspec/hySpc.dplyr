@@ -45,7 +45,7 @@ transmute.hyperSpec <- function(.data, ...) {
   setLabels_select(.data, res)
 }
 
-test(transmute.hyperSpec) <- function() {
+hySpc.testthat::test(transmute.hyperSpec) <- function() {
   context("transmute.hyperSpec")
 
   test_that("non hyperSpec objects are rejected", {

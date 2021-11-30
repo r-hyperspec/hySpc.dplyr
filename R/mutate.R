@@ -38,7 +38,7 @@ mutate.hyperSpec <- function(.data, ...) {
     .data
 }
 
-test(mutate.hyperSpec) <- function() {
+hySpc.testthat::test(mutate.hyperSpec) <- function() {
   context("mutate.hyperSpec")
 
   test_that("non hyperSpec objects are rejected", {

@@ -52,7 +52,7 @@ filter.hyperSpec <- function(.data, ..., .preserve = FALSE) {
   .data
 }
 
-test(filter.hyperSpec) <- function() {
+hySpc.testthat::test(filter.hyperSpec) <- function() {
   context("filter")
 
 
