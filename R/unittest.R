@@ -16,9 +16,9 @@
 #' @importFrom  testthat get_reporter
 #' @import hySpc.testthat
 #' @export
+# FIXME: why is this example needed at all?
 #' @examples
-#'
-#' hySpc.dplyr.unittest()
+#' # hySpc.dplyr.unittest()
 
 hySpc.dplyr.unittest <- function() {
   if (!requireNamespace("testthat", quietly = TRUE)) {
