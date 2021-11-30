@@ -20,6 +20,8 @@
 #' @export
 #'
 #' @examples
+#' data(laser, package = "hyperSpec")
+#'
 #' laser %>%
 #'   transmute(t, filename) %>%
 #'   head() # => results in a data frame
