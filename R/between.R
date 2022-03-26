@@ -29,7 +29,7 @@ setGeneric("between", useAsDefault = dplyr::between)
 #' @importFrom methods setMethod
 setMethod("between", signature = "matrix", .between.matrix)
 
-test(.between.matrix) <- function() {
+hySpc.testthat::test(.between.matrix) <- function() {
   context("between")
 
   test_that("correct matrix behaviour", {
@@ -54,7 +54,7 @@ test(.between.matrix) <- function() {
 setMethod("between", signature = "hyperSpec", .between.hyperSpec)
 
 
-test(.between.hyperSpec) <- function() {
+hySpc.testthat::test(.between.hyperSpec) <- function() {
   context("between")
 
   test_that("correct hyperSpec behaviour", {

@@ -7,7 +7,7 @@ Authors@R: c(
     person("Claudia", "Beleites", role = c("aut","cre"), email = "Claudia.Beleites@chemometrix.gmbh"),
     person("Erick", "Oduniyi", role = "aut"),
     person("Vilmantas", "Gegzna", role = "aut"),
-    person("Bryan", "Hanson", role = "aut")
+    person("Bryan A.", "Hanson", role = "aut")
     )
 Description:
     dplyr functions like select, filter etc. are provided for hyperSpec objects.
@@ -34,7 +34,7 @@ Suggests:
     rmarkdown,
     covr
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Collate:
     'unittest.R'

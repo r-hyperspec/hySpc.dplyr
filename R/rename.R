@@ -15,7 +15,7 @@
 #' @return hyperSpec object. If `$spc` is renamed, the result is an error.
 #' @include unittest.R
 #' @importFrom dplyr rename
-#' @importFrom hyperSpec chk.hy
+#' @importFrom hyperSpec assert_hyperSpec
 #' @importFrom hyperSpec labels labels<-
 #' @export
 #'
@@ -27,7 +27,7 @@
 rename.hyperSpec <- function(.data, ...) {
 
   # Check if user passed in a hyperSpec object
-  chk.hy(.data)
+  assert_hyperSpec(.data)
 
   # Use dplyr::rename() to rename hyperSpec object data slot
   res <- rename(.data@data, ...)
@@ -45,7 +45,7 @@ rename.hyperSpec <- function(.data, ...) {
 }
 
 # Begin unit testing (UT)
-test(rename.hyperSpec) <- function(){
+hySpc.testthat::test(rename.hyperSpec) <- function(){
   context("rename.hyperSpec")
 
   test_that("non hyperSpec objects are rejected", {

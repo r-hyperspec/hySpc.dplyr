@@ -50,7 +50,11 @@ navbar:
 # -------------------------------------------------------------------------
 # # If you need links for authors, modify this section:
 
-# authors:
+authors:
+  Bryan A. Hanson:
+    href: http://academic.depauw.edu/hanson_web/
+  Vilmantas Gegzna:
+    href: https://orcid.org/0000-0002-9500-5167
 #   First-name Family-name:
 #     href: https://some.url
 
