@@ -36,7 +36,6 @@
 #' # remove spectra that contain /only/ NAs:
 #' tmp %>% filter(!all_wl(is.na(spc)))
 #' tmp %>% filter(any_wl(!is.na(spc))) # the same
-#' tmp %>% filter(spc == spc) # the same(!) due to dplyr's handling of NAs
 #'
 #' # keep only spectra with minimum average intensity
 #' laser %T>%
