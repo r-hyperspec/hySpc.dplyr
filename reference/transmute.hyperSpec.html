@@ -113,7 +113,7 @@ if ungrouped).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6 281 rawdata/laser.txt.gz</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">laser</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">   <span class="fu">transmute</span><span class="op">(</span><span class="op">-</span><span class="va">spc</span><span class="op">)</span> <span class="co"># =&gt; results in a hyperSpec object</span></span>
+<span class="r-in">  <span class="fu">transmute</span><span class="op">(</span><span class="op">-</span><span class="va">spc</span><span class="op">)</span> <span class="co"># =&gt; results in a hyperSpec object</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    -spc.-75.4628 -spc.-73.3067 -spc.-71.151 -spc.-68.9958 -spc.-66.841</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1      -164.6500     -190.1970    -286.5130     -307.4540    -310.9960</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      -179.7240     -192.5170    -247.0740     -313.2550    -338.8470</span>
@@ -796,9 +796,9 @@ if ungrouped).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 84      -112.0860</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">laser</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">   <span class="fu">transmute</span><span class="op">(</span>spc2 <span class="op">=</span> <span class="va">spc</span><span class="op">*</span><span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">   <span class="fu">transmute</span><span class="op">(</span><span class="va">spc2</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">   <span class="fu">transmute</span><span class="op">(</span><span class="va">spc2</span><span class="op">*</span><span class="fl">2</span><span class="op">)</span> <span class="co"># =&gt; results in a hyperSpec object</span></span>
+<span class="r-in">  <span class="fu">transmute</span><span class="op">(</span>spc2 <span class="op">=</span> <span class="va">spc</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span class="r-in">  <span class="fu">transmute</span><span class="op">(</span><span class="va">spc2</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span class="r-in">  <span class="fu">transmute</span><span class="op">(</span><span class="va">spc2</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># =&gt; results in a hyperSpec object</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> hyperSpec object</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    84 spectra</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1 data columns</span>

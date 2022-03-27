@@ -115,9 +115,9 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
 <span class="r-in"></span>
 <span class="r-in"><span class="co">## filtering based on the spectra matrix:</span></span>
 <span class="r-in"><span class="co"># remove all spectra with NAs</span></span>
-<span class="r-in"><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="va">laser</span> <span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">tmp</span> <span class="op">[[</span><span class="fl">3</span><span class="op">:</span><span class="fl">4</span>, , <span class="fl">404.7</span> <span class="op">~</span> <span class="fl">404.9</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
-<span class="r-in"><span class="va">tmp</span> <span class="op">[[</span><span class="fl">6</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
+<span class="r-in"><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="va">laser</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
+<span class="r-in"><span class="va">tmp</span><span class="op">[[</span><span class="fl">3</span><span class="op">:</span><span class="fl">4</span>, , <span class="fl">404.7</span> <span class="op">~</span> <span class="fl">404.9</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
+<span class="r-in"><span class="va">tmp</span><span class="op">[[</span><span class="fl">6</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">tmp</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu">any_wl</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">spc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> hyperSpec object</span>
