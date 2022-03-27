@@ -38,8 +38,10 @@
 #' tmp %>% filter(any_wl(!is.na(spc))) # the same
 #'
 #' # keep only spectra with minimum average intensity
-#' laser %T>%
-#'      plot(spc.nmax = Inf) %>%
+#' laser %>%
+#'   plot(spc.nmax = Inf)
+#'
+#' laser %>%
 #'   filter(rowMeans(spc) > 9000) %>%
 #'   plot(col = "red", add = TRUE)
 filter.hyperSpec <- function(.data, ..., .preserve = FALSE) {
