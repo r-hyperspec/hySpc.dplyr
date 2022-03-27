@@ -19,7 +19,7 @@ LazyData: yes
 Additional_repositories: 
     https://r-hyperspec.github.io/pkg-repo/
 Depends:
-    hyperSpec (>= 0.99-20200527),
+    hyperSpec (>= 0.200),
     dplyr (>= 1.0.0),
     hySpc.chondro,
     magrittr

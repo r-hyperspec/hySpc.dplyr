@@ -79,3 +79,4 @@ install.packages("hySpc.dplyr", repos = repos)
 ## For Developers
 
 Developers can find information about automatic deployment from this repo to `pkg-repo` [here](https://github.com/r-hyperspec/pkg-repo) in `CONTRIBUTING.md`.
+
