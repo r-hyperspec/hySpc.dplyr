@@ -36,7 +36,7 @@ select.hyperSpec <- function(.data, ...) {
   setLabels_select(.data, res)
 }
 
-test(select.hyperSpec) <- function() {
+hySpc.testthat::test(select.hyperSpec) <- function() {
   context("select.hyperSpec")
 
   test_that("labels attribute when returning data.frame", {

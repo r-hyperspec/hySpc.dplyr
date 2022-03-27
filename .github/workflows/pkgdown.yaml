@@ -1,9 +1,23 @@
+# READ-ONLY FILE
+#
+# Original file resides in r-hyperspec/pkg-skelton.
+# DO NOT EDIT in any other repo as these changes will be overwritten.
+# Edit at r-hyperspec/pkg-skelton, then push there and
+# this file will be deployed to the other repos.
+#
+
 on:
   push:
     branches:
       - release
+      - main
       - master
       - develop
+
+      # - auto-update
+      - auto-update-test
+
+    tags: ['*']
 
 name: Website (pkgdown)
 
@@ -12,17 +26,17 @@ jobs:
     runs-on: macOS-latest
 
     env:
-      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-r@master
-        with:
-          r-version: 'release'
+      - uses: r-lib/actions/setup-pandoc@v1
 
-      - uses: r-lib/actions/setup-pandoc@master
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          use-public-rspm: true
+          r-version: 'release'
 
       - name: Query dependencies
         run: |
@@ -32,7 +46,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Cache R packages
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
@@ -42,8 +56,7 @@ jobs:
         run: |
           install.packages(c("remotes", "devtools"))
           remotes::install_deps(dependencies = TRUE)
-          # remotes::install_dev("pkgdown")
-          remotes::install_github("forked-packages/pkgdown")
+          remotes::install_cran("pkgdown", type = "binary")
         shell: Rscript {0}
 
       - name: Roxygenize
