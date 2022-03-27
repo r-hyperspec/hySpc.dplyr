@@ -5,7 +5,7 @@
 #' @return Object with the correct labels
 #' @md
 #' @export
-hy_update_labels <- function(.data, res){
+hy_update_labels <- function(.data, res) {
 
   # Update labels
   labels <- labels(.data)[c(".wavelength", colnames(res))]

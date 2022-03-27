@@ -40,15 +40,15 @@ hySpc.testthat::test(select.hyperSpec) <- function() {
   context("select.hyperSpec")
 
   test_that("labels attribute when returning data.frame", {
-    ref_labels <- labels(chondro [, c("x", "y")])
+    ref_labels <- labels(chondro[, c("x", "y")])
 
     # label $spc is added automatically by initialize -
     # it is not supposed to be returned by select.hyperSpec
-    ref_labels <- ref_labels [!grepl("spc", ref_labels)]
-    ref_labels <- ref_labels [order(names(ref_labels))]
+    ref_labels <- ref_labels[!grepl("spc", ref_labels)]
+    ref_labels <- ref_labels[order(names(ref_labels))]
 
     test_labels <- attr(select(chondro, x, y), "labels")
-    test_labels <- test_labels [order(names(test_labels))]
+    test_labels <- test_labels[order(names(test_labels))]
 
     expect_equal(test_labels, ref_labels)
   })
@@ -56,7 +56,7 @@ hySpc.testthat::test(select.hyperSpec) <- function() {
   test_that("labels attribute when returning data.frame", {
     expect_equal(
       labels(as.hyperSpec(select(chondro, x, y))),
-      labels(chondro [, c("x", "y")])
+      labels(chondro[, c("x", "y")])
     )
   })
 }

@@ -25,7 +25,7 @@ setGeneric("between", useAsDefault = dplyr::between)
 #' @export
 #'
 #' @examples
-#' between(flu [[]], 100, 400)
+#' between(flu[[]], 100, 400)
 #' @importFrom methods setMethod
 setMethod("between", signature = "matrix", .between.matrix)
 
@@ -50,7 +50,7 @@ hySpc.testthat::test(.between.matrix) <- function() {
 #' @export
 #'
 #' @examples
-#' between(flu [[]], 100, 400)
+#' between(flu[[]], 100, 400)
 setMethod("between", signature = "hyperSpec", .between.hyperSpec)
 
 

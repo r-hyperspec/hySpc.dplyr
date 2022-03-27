@@ -22,8 +22,8 @@
 #' @examples
 #'
 #' laser %>%
-#'   rename (filename2 = filename) %>%
-#'   head # results in a hyperSpec object
+#'   rename(filename2 = filename) %>%
+#'   head() # results in a hyperSpec object
 rename.hyperSpec <- function(.data, ...) {
 
   # Check if user passed in a hyperSpec object
@@ -33,7 +33,7 @@ rename.hyperSpec <- function(.data, ...) {
   res <- rename(.data@data, ...)
 
   # Check if $spc was renamed
-  if (!'spc' %in% colnames(res)) {
+  if (!"spc" %in% colnames(res)) {
 
     # Throw an error
     stop("$spc cannot be renamed")
@@ -45,7 +45,7 @@ rename.hyperSpec <- function(.data, ...) {
 }
 
 # Begin unit testing (UT)
-hySpc.testthat::test(rename.hyperSpec) <- function(){
+hySpc.testthat::test(rename.hyperSpec) <- function() {
   context("rename.hyperSpec")
 
   test_that("non hyperSpec objects are rejected", {
@@ -62,5 +62,4 @@ hySpc.testthat::test(rename.hyperSpec) <- function(){
     tmp <- rename.hyperSpec(tmp, clusters = region)
     expect_equal(labels(tmp), labels(chondro))
   })
-
 }

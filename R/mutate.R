@@ -19,23 +19,23 @@
 #'
 #' @examples
 #' laser %>%
-#'   mutate (t, filename)
-#'   head # => results in a hyperSpec object
+#'   mutate(t, filename)
+#' head # => results in a hyperSpec object
 #' laser %>%
-#'    mutate (-spc) # => results in a hyperSpec object
+#'   mutate(-spc) # => results in a hyperSpec object
 #' laser %>%
-#'    mutate (spc2 = spc*2) %>%
-#'    mutate (spc2) %>%
-#'    mutate (spc2*2) # => results in a hyperSpec object
+#'   mutate(spc2 = spc * 2) %>%
+#'   mutate(spc2) %>%
+#'   mutate(spc2 * 2) # => results in a hyperSpec object
 mutate.hyperSpec <- function(.data, ...) {
 
-    # Check if user passed in a hyperSpec object
-    assert_hyperSpec(.data)
+  # Check if user passed in a hyperSpec object
+  assert_hyperSpec(.data)
 
-    # Pass mutate arguments to dplyr::mutate
-    res <- mutate(.data@data, ...)
-    .data@data <- res
-    .data
+  # Pass mutate arguments to dplyr::mutate
+  res <- mutate(.data@data, ...)
+  .data@data <- res
+  .data
 }
 
 hySpc.testthat::test(mutate.hyperSpec) <- function() {
@@ -48,13 +48,13 @@ hySpc.testthat::test(mutate.hyperSpec) <- function() {
 
   test_that("arguments are correctly passed onto mutate/transmute", {
     hy_tmp <- .testdata
-    hy_tmp@data <- dplyr::mutate(hy_tmp@data, spc*2, spc*3, spc*0)
-    expect_equivalent(mutate.hyperSpec(.testdata, spc*2, spc*3, spc*0), hy_tmp)
+    hy_tmp@data <- dplyr::mutate(hy_tmp@data, spc * 2, spc * 3, spc * 0)
+    expect_equivalent(mutate.hyperSpec(.testdata, spc * 2, spc * 3, spc * 0), hy_tmp)
   })
 
   test_that("$spc can be used for mutation", {
     hy_tmp <- .testdata
-    hy_tmp@data$spc2 <- hy_tmp@data$spc*2
-    expect_identical(mutate.hyperSpec(.testdata, spc2 = spc*2), hy_tmp)
+    hy_tmp@data$spc2 <- hy_tmp@data$spc * 2
+    expect_identical(mutate.hyperSpec(.testdata, spc2 = spc * 2), hy_tmp)
   })
 }

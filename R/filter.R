@@ -26,9 +26,9 @@
 #'
 #' ## filtering based on the spectra matrix:
 #' # remove all spectra with NAs
-#' tmp <- laser [1:6]
-#' tmp [[3:4, , 404.7 ~ 404.9]] <- NA
-#' tmp [[6]] <- NA
+#' tmp <- laser[1:6]
+#' tmp[[3:4, , 404.7 ~ 404.9]] <- NA
+#' tmp[[6]] <- NA
 #'
 #' tmp %>% filter(!any_wl(is.na(spc)))
 #' tmp %>% filter(all_wl(!is.na(spc))) # the same

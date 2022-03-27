@@ -13,27 +13,27 @@
 #'
 #' @examples
 #' flu %>%
-#'  setLabels(.wavelength = "f / THz", c = "c / ml")
+#'   setLabels(.wavelength = "f / THz", c = "c / ml")
 #'
 #' @export
 setLabels <- function(.data, ...) {
 
-    # Check if user passed in a hyperSpec object
-    assert_hyperSpec(.data)
-    args <- enquos(...)
-    args_names <- names(args)
-    labels2update <- args_names[args_names %in% names(labels(.data))]
-    if (length(args) == 0L) {
-      return(NULL)
+  # Check if user passed in a hyperSpec object
+  assert_hyperSpec(.data)
+  args <- enquos(...)
+  args_names <- names(args)
+  labels2update <- args_names[args_names %in% names(labels(.data))]
+  if (length(args) == 0L) {
+    return(NULL)
+  }
+  for (i in seq_along(args)) {
+    setlabels2 <- quo_name(quo_get_expr(args[[i]]))
+    if (grepl("expr", setlabels2)) {
+      setlabels2 <- as.expression(setlabels2)
     }
-    for (i in seq_along(args)) {
-        setlabels2 <- quo_name(quo_get_expr(args[[i]]))
-        if (grepl('expr', setlabels2)) {
-            setlabels2 <- as.expression(setlabels2)
-        }
-        labels(.data, labels2update[i]) <- setlabels2
-    }
-    .data
+    labels(.data, labels2update[i]) <- setlabels2
+  }
+  .data
 }
 
 #' @rdname setLabels
@@ -42,7 +42,7 @@ setLabels <- function(.data, ...) {
 #' @param ... list of columns to update on
 #' @export
 setLabels_transmute <- function(.data, ...) {
-    setLabels(.data, ...)
+  setLabels(.data, ...)
 }
 
 #' @rdname setLabels
@@ -72,17 +72,17 @@ setLabels_select <- function(.data, res) {
 #' @param res resulting data frame
 #' @export
 setLabels_rename <- function(.data, res) {
-    labels.to.update <- setdiff(colnames(res), colnames(.data))
-    labels.to.remove <- setdiff(colnames(.data), colnames(res))
+  labels.to.update <- setdiff(colnames(res), colnames(.data))
+  labels.to.remove <- setdiff(colnames(.data), colnames(res))
 
-    # Update the data slot with newly renamed data frame
-    .data@data <- res
+  # Update the data slot with newly renamed data frame
+  .data@data <- res
 
-    # Update labels of hyperSpec object
-    new.labels <- lapply(labels(.data, labels.to.update), as.expression)
-    labels(.data)[c(labels.to.remove)] <- NULL
-    labels(.data)[c(labels.to.update)] <- new.labels
-    .data
+  # Update labels of hyperSpec object
+  new.labels <- lapply(labels(.data, labels.to.update), as.expression)
+  labels(.data)[c(labels.to.remove)] <- NULL
+  labels(.data)[c(labels.to.update)] <- new.labels
+  .data
 }
 
 hySpc.testthat::test(setLabels) <- function() {
@@ -93,10 +93,9 @@ hySpc.testthat::test(setLabels) <- function() {
     expect_error(setLabels(df))
   })
 
-  test_that("labels are correctly set" , {
-      tmp <- laser
-      labels(tmp, ".wavelength") <- "f / THz"
-      expect_equivalent(setLabels(laser, .wavelength = "f /THz"), tmp)
-
+  test_that("labels are correctly set", {
+    tmp <- laser
+    labels(tmp, ".wavelength") <- "f / THz"
+    expect_equivalent(setLabels(laser, .wavelength = "f /THz"), tmp)
   })
 }
