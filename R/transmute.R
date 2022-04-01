@@ -67,10 +67,10 @@ hySpc.testthat::test(transmute.hyperSpec) <- function() {
       )
   })
 
-  test_that("$spc can be used for mutation", {
-    # skip("@eoduniyi FIX SOMEHOW...")
-    hy_tmp <- .testdata
-    hy_tmp@data$spc2 <- hy_tmp@data$spc * 2
-    expect_identical(transmute.hyperSpec(.testdata, spc2 = spc * 2), hy_tmp)
+  test_that("hyperSpec object is returned when `$spc` is transmuted", {
+    expect_equivalent(
+      assert_hyperSpec(transmute(.testdata, spc = spc*2)),
+      assert_hyperSpec(.testdata)
+      )
   })
 }
