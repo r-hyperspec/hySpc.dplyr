@@ -60,6 +60,13 @@ hySpc.testthat::test(transmute.hyperSpec) <- function() {
     )
   })
 
+  test_that("columns are returned in the correct order", {
+    expect_equivalent(
+      transmute(.testdata, c = c*0, c1 = c*1, c2 = c*2),
+      cbind(c = .testdata[[, c("c")]]*0, c1 = 0, c2 = 0)
+      )
+  })
+
   test_that("$spc can be used for mutation", {
     # skip("@eoduniyi FIX SOMEHOW...")
     hy_tmp <- .testdata
