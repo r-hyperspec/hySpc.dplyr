@@ -53,11 +53,11 @@ hySpc.testthat::test(transmute.hyperSpec) <- function() {
     expect_error(transmute.hyperSpec(df))
   })
 
-  test_that("arguments are correctly passed onto transmute", {
-    # skip("@eoduniyi FIX SOMEHOW...")
-    hy_tmp <- .testdata
-    hy_tmp@data <- dplyr::transmute(hy_tmp@data, spc * 2, spc * 3, spc * 0)
-    expect_equivalent(transmute.hyperSpec(.testdata, spc * 2, spc * 3, spc * 0), hy_tmp)
+  test_that("data.frame is returned when `$spc` are not transmuted", {
+    expect_equivalent(
+      transmute(.testdata, c = c*2),
+      .testdata[[, c("c")]]*2
+    )
   })
 
   test_that("$spc can be used for mutation", {
