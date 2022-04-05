@@ -97,6 +97,7 @@ hySpc.testthat::test(filter.hyperSpec) <- function() {
     )
   })
 
+  # Maybe we should table this for a larger discussion/issue
   test_that("grouping and filter", {
     skip("grouping not yet implemented")
   })
