@@ -36,9 +36,8 @@ hySpc.testthat::test(slice.hyperSpec) <- function() {
     )
   })
 
+  # Maybe we should table this for a larger discussion/issue
   test_that("grouping and slice", {
     skip("grouping not yet implemented")
   })
 }
-
-# slice_.hyperSpec <- slice.hyperSpec
