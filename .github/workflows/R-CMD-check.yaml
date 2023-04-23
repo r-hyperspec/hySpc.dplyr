@@ -12,6 +12,9 @@ on:
     branches: [main, master, develop, release, auto-update-test]
   pull_request:
     branches: [main, master, develop, release]
+  schedule:
+    # (see https://crontab.guru)
+    - cron: "20 4 * */2 THU"
 
 name: R-CMD-check
 
