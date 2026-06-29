@@ -60,6 +60,17 @@ jobs:
           use-public-rspm: true
           extra-repositories: "https://r-hyperspec.github.io/pkg-repo/"
 
+      # The package ships an extendr Rust extension whose `dgcmatrix-faer-bridge`
+      # dependency uses Rust edition 2024 (rustc >= 1.85). Install the toolchain
+      # BEFORE setup-r-dependencies, which triggers `local::.` -> cargo build.
+      # NOTE: this file is mirrored from r-hyperspec/pkg-skelton; the Rust step
+      # is specific to hySpc.hpc and will need to either be propagated upstream
+      # conditionally or this repo excluded from auto-update sync.
+      - name: Install Rust toolchain (>= 1.85 for edition 2024)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.85"
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck, any::devtools, any::remotes, local::.
@@ -88,4 +99,3 @@ jobs:
         shell: bash
         run: |
           find check -name '00check.log' -exec sh -c 'echo "### $1"; cat "$1"' _ {} \; >> $GITHUB_STEP_SUMMARY || true
-
