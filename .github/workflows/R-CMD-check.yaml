@@ -70,6 +70,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: "1.85"
+          targets: x86_64-pc-windows-gnu
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
