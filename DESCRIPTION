@@ -41,6 +41,7 @@ Collate:
     'between.R'
     'filter.R'
     'hySpc.dplyr-package.R'
+    'hy_update_labels.R'
     'setLabels.R'
     'mutate.R'
     'rename.R'

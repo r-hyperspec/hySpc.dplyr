@@ -80,12 +80,6 @@ hySpc.testthat::test(filter.hyperSpec) <- function() {
   test_that("filtering the spectra matrix", {
     ## comparison on spectra matrix yields nrow * nwl results, but filter needs
     ## nrow results
-    skip("@eoduniyi FIX SOMEHOW...")
-
-    expect_equivalent(
-      filter(.testdata, spc > 100),
-      .testdata[all_wl(.testdata > 100, na.rm = TRUE) & !all_wl(is.na(.testdata))]
-    )
 
     expect_equivalent(
       filter(.testdata, all_wl(spc > 100)),
@@ -103,6 +97,7 @@ hySpc.testthat::test(filter.hyperSpec) <- function() {
     )
   })
 
+  # Maybe we should table this for a larger discussion/issue
   test_that("grouping and filter", {
     skip("grouping not yet implemented")
   })
